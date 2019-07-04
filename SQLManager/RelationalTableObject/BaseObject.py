@@ -33,6 +33,7 @@ class BaseObject(sql_object.Model):
                 cls.obj_logger.error('commit failed : %s' % (tr(e)))
                 raise SQLException
 
+
     @classmethod
     def delete(cls, db_obj, need_commit=False):
         if not isinstance(db_obj, cls):
