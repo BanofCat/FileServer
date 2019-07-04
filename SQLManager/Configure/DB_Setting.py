@@ -6,6 +6,8 @@
 # pymysql：mysql+pymysql://<username>:<password>@<host>/<dbname>[?<options>]
 #
 # MySQL-Connector：mysql+mysqlconnector://<user>:<password>@<host>[:<port>]/<dbname>
+
+# sqlite:///<path>/<dbname>
 #
 # cx_Oracle：oracle+cx_oracle://user:pass@host:port/dbname[?key=value&key=value...]
 
@@ -17,7 +19,7 @@ DB_PORT = "12345"
 DB_NAME = "image_database"
 
 # data base connect url
-DB_URL = "mysql+pymysql://[%s]:[%s]@[%s]:[%s]/[%s]?charset=utr8" % (DB_ACCOUNT, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME)
+SQLALCHEMY_DATABASE_URI = "mysql+pymysql://%s:%s@%s:%s/%s?charset=utr8" % (DB_ACCOUNT, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME)
 
 # file upload limit
 ALLOW_EXTENSIONS = ('png', 'jpeg', 'svg')
