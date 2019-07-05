@@ -11,15 +11,22 @@
 #
 # cx_Oracle：oracle+cx_oracle://user:pass@host:port/dbname[?key=value&key=value...]
 
-
-DB_ACCOUNT = "Ban"
-DB_PASSWORD = "123456"
-DB_HOST = "localhost"
-DB_PORT = "12345"
+DB_SERVER = 'mysql'
+DB_DRIVER = 'pymysql'
+DB_ACCOUNT = "root"
+DB_PASSWORD = "root"
+DB_HOST = "127.0.0.1"
+DB_PORT = "3306"
 DB_NAME = "image_database"
 
 # data base connect url
-SQLALCHEMY_DATABASE_URI = "mysql+pymysql://%s:%s@%s:%s/%s?charset=utr8" % (DB_ACCOUNT, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME)
+SQLALCHEMY_DATABASE_URI = "%s+%s://%s:%s@%s:%s/?charset=utf8" % (
+    DB_SERVER, DB_DRIVER, DB_ACCOUNT, DB_PASSWORD, DB_HOST, DB_PORT
+)
+# SQLALCHEMY_DATABASE_URI = "%s+%s://%s:%s@%s:%s/%s?charset=utf8" % (
+#     DB_SERVER, DB_DRIVER, DB_ACCOUNT, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME
+# )
 
+SQLALCHEMY_TRACK_MODIFICATIONS = False
 # file upload limit
 ALLOW_EXTENSIONS = ('png', 'jpeg', 'svg')
