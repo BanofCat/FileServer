@@ -1,6 +1,6 @@
 from SQLManager import sql_object
 import logging
-from SQLManager.SqlException import *
+from SQLManager.Exception.SqlException import *
 from sqlalchemy.exc import SQLAlchemyError
 import abc
 

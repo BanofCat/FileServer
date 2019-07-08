@@ -17,7 +17,7 @@ DB_ACCOUNT = "root"
 DB_PASSWORD = "root"
 DB_HOST = "127.0.0.1"
 DB_PORT = "3306"
-DB_NAME = "image_database"
+DB_NAME = "image_database_test"
 
 # data base connect url
 SQLALCHEMY_DATABASE_URI = "%s+%s://%s:%s@%s:%s/?charset=utf8" % (

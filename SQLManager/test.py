@@ -20,7 +20,9 @@ if __name__ == '__main__':
     sql_object.engine.execute('USE %s' % DB_NAME)   # select db to use
     sql_object.create_all(app=test_app)
 
-    test_user = User()
-    # User.add(test_user)
+    test_user = User("test", "test", "TestHello", "qweqweaaa")
+    test_user1 = User("test1", "test1", "TestHello1", "RR")
+    User.add(test_user, True)
+    User.add(test_user1, True)
     # # User.add(1)
     print("test end")
