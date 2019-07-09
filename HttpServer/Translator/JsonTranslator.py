@@ -43,8 +43,6 @@ class JsonEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, o)
 
 
-
-
 class JsonTranslator(BaseTranslator):
 
     @classmethod
