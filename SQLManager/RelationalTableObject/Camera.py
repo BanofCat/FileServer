@@ -13,12 +13,20 @@ class Camera(sql_object.Model, BaseObject):
 
     producer = sql_object.Column(sql_object.String(32), nullable=True, unique=False)
 
-    @classmethod
-    def is_exist(cls, db_obj):
-        ret = Camera.query.filter(Camera.id == db_obj.id).first()
-        if ret is None:
-            return False
-        return True
+    # @classmethod
+    # def is_exist(cls, db_obj):
+    #     ret = Camera.query.filter(Camera.id == db_obj.id).first()
+    #     if ret is None:
+    #         return False
+    #     return True
+    #
+    # @classmethod
+    # def is_exist(cls, id=None):
+    #     if id is not None:
+    #         ret = Camera.query.filter(Camera.id == id).first()
+    #         if ret is not None:
+    #             return True
+    #     return False
 
     def __init__(self, id, use_type, producer):
         BaseObject.__init__(self)
@@ -27,4 +35,4 @@ class Camera(sql_object.Model, BaseObject):
     def _set_data(self, id, use_type, producer):
         self.id = id
         self.use_type = use_type
-        self.type = producer
+        self.producer = producer

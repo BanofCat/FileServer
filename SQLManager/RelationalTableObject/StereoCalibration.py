@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 from SQLManager import sql_object
 from SQLManager.RelationalTableObject.BaseObject import BaseObject
+from SQLManager.RelationalTableObject.Camera import Camera
+from SQLManager.Exception.SqlException import ObjectNotExist
 
 
 class StereoCalibration(sql_object.Model, BaseObject):
@@ -9,19 +11,9 @@ class StereoCalibration(sql_object.Model, BaseObject):
 
     id = sql_object.Column(sql_object.Integer, primary_key=True)
 
-    l_camera_id = sql_object.relationship(
-        "Camera",
-        backref='StereoCalibration',
-        lazy='dynamic',
-        nullable=False
-    )
+    l_camera_id = sql_object.Column(sql_object.String(32), sql_object.ForeignKey('Camera.id'), nullable=True)
 
-    r_camera_id = sql_object.relationship(
-        "Camera",
-        backref='StereoCalibration',
-        lazy='dynamic',
-        nullable=False
-    )
+    r_camera_id = sql_object.Column(sql_object.String(32), sql_object.ForeignKey('Camera.id'), nullable=True)
 
     l_cam_matrix = sql_object.Column(sql_object.String(256), nullable=True, unique=False)
 
@@ -35,31 +27,27 @@ class StereoCalibration(sql_object.Model, BaseObject):
 
     stereo_E = sql_object.Column(sql_object.String(256), nullable=True, unique=False)
 
-    stereo_F = sql_object.Column(sql_object.Double, nullable=True, unique=False)
+    stereo_F = sql_object.Column(sql_object.Float(20, 10), nullable=True, unique=False)
 
-    stereo_R = sql_object.Column(sql_object.Double, nullable=True, unique=False)
+    stereo_R = sql_object.Column(sql_object.Float(20, 10), nullable=True, unique=False)
 
-    pixel_err = sql_object.Column(sql_object.Double, nullable=True, unique=False)
+    pixel_err = sql_object.Column(sql_object.Float(20, 10), nullable=True, unique=False)
 
-    @classmethod
-    def is_exist(cls, db_obj):
-        ret = StereoCalibration.query.filter(StereoCalibration.id == db_obj.id).first()
-        if ret is None:
-            return False
-        return True
-
-    def __init__(self, id, l_camera_id, r_camera_id, l_cam_matrix=None, r_cam_matrix=None, l_dist_coeffs=None,
+    def __init__(self, l_camera_id, r_camera_id, l_cam_matrix=None, r_cam_matrix=None, l_dist_coeffs=None,
                  r_dist_coeffs=None, rt_cam_a2_cam_b=None, stereo_e=None, stereo_f=None, stereo_r=None, pixel_err=None):
 
         BaseObject.__init__(self)
-        self._set_data(id, l_camera_id, r_camera_id, l_cam_matrix, r_cam_matrix, l_dist_coeffs, r_dist_coeffs,
+        self._set_data(l_camera_id, r_camera_id, l_cam_matrix, r_cam_matrix, l_dist_coeffs, r_dist_coeffs,
                        rt_cam_a2_cam_b, stereo_e, stereo_f, stereo_r, pixel_err)
 
-    def _set_data(self, id, l_camera_id, r_camera_id, l_cam_matrix=None, r_cam_matrix=None, l_dist_coeffs=None,
+    def _set_data(self, l_camera_id, r_camera_id, l_cam_matrix=None, r_cam_matrix=None, l_dist_coeffs=None,
                   r_dist_coeffs=None, rt_cam_a2_cam_b=None, stereo_e=None, stereo_f=None, stereo_r=None,
                   pixel_err=None):
 
-        self.id = id
+        if not Camera.is_exist_id(l_camera_id):
+            raise ObjectNotExist("[Error]:camera is not exits which id is %s" % l_camera_id)
+        if not Camera.is_exist_id(r_camera_id):
+            raise ObjectNotExist("[Error]:camera is not exits which id is %s" % r_camera_id)
         self.l_camera_id = l_camera_id
         self.r_camera_id = r_camera_id
         self.l_cam_matrix = l_cam_matrix

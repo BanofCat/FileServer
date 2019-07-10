@@ -11,7 +11,9 @@ from SQLManager.RelationalTableObject.InverseTest import InverseTest
 from SQLManager.RelationalTableObject.LocationList import LocationList
 from SQLManager.RelationalTableObject.SingleCalibration import SingleCalibration
 from SQLManager.RelationalTableObject.StereoCalibration import StereoCalibration
+from SQLManager.RelationalTableObject.DH_Optimised import DH_Model
 from SQLManager.Configure.DB_Setting import DB_NAME
+from SQLManager.Exception.SqlException import *
 
 
 if __name__ == '__main__':
@@ -27,13 +29,31 @@ if __name__ == '__main__':
     sql_object.engine.execute('CREATE DATABASE IF NOT EXISTS %s' % DB_NAME)     # create db
     sql_object.engine.execute('USE %s' % DB_NAME)   # select db to use
     sql_object.create_all(app=test_app)
+    try:
 
-    test_user = User("test", "test", "TestHello")
-    test_user1 = User("test1", "test1", "TestHello1")
-    test_camera = Camera("test1", "test1", "TestHello1")
-    test_robot = Robot("test1", "test1", "TestHello1")
-    Camera.add(test_camera)
-    Robot.add(test_robot)
-    User.add(test_user1, True)
+        test_user = User("test1", "test1", "TestHello5")
+        test_user1 = User("test2", "test2", "TestHello6")
+        test_camera = Camera("test3", "test3", "TestHello7")
+        test_robot = Robot("test4", 4, "RR")
+        test_gen = GenerateData("test4", 1)
+
+        Camera.add(test_camera)
+        Robot.add(test_robot)
+        User.add(test_user1)
+        User.add(test_user, True)
+        GenerateData.add(test_gen, True)
+
+        test_single = SingleCalibration("test3")
+        test_stereo = StereoCalibration("test3", "test3")
+        test_dh = DH_Optimised(DH_Model.Faset)
+        test_inv = InverseTest()
+        test_loc = LocationList(1)
+        SingleCalibration.add(test_single)
+        StereoCalibration.add(test_stereo)
+        DH_Optimised.add(test_dh)
+        InverseTest.add(test_inv)
+        LocationList.add(test_loc, True)
+    except ObjectNotExist as e:
+        print(e.what())
     # # User.add(1)
     print("test end")

@@ -17,28 +17,20 @@ class InverseTest(sql_object.Model, BaseObject):
 
     r_cam_img_pts = sql_object.Column(sql_object.String(256), nullable=True, unique=False)
 
-    pixel_err = sql_object.Column(sql_object.Double, nullable=True, unique=False)
+    pixel_err = sql_object.Column(sql_object.Float(20, 10), nullable=True, unique=False)
 
-    total_pixel_err = sql_object.Column(sql_object.Double, nullable=True, unique=False)
+    total_pixel_err = sql_object.Column(sql_object.Float(20, 10), nullable=True, unique=False)
 
-    @classmethod
-    def is_exist(cls, db_obj):
-        ret = InverseTest.query.filter(InverseTest.id == db_obj.id).first()
-        if ret is None:
-            return False
-        return True
-
-    def __init__(self, id, opt_all_ik=None, ik_err=None, l_cam_img_pts=None,
+    def __init__(self, opt_all_ik=None, ik_err=None, l_cam_img_pts=None,
                  r_cam_img_pts=None, pixel_err=None, total_pixel_err=None):
 
         BaseObject.__init__(self)
-        self._set_data(id, opt_all_ik, ik_err, l_cam_img_pts, r_cam_img_pts,
+        self._set_data(opt_all_ik, ik_err, l_cam_img_pts, r_cam_img_pts,
                        pixel_err, total_pixel_err)
 
-    def _set_data(self, id, opt_all_ik=None, ik_err=None, l_cam_img_pts=None,
+    def _set_data(self, opt_all_ik=None, ik_err=None, l_cam_img_pts=None,
                   r_cam_img_pts=None, pixel_err=None, total_pixel_err=None):
 
-        self.id = id
         self.opt_all_ik = opt_all_ik
         self.ik_err = ik_err
         self.l_cam_img_pts = l_cam_img_pts

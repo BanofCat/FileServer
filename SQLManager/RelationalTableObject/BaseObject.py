@@ -1,17 +1,12 @@
-from SQLManager import sql_object
 import logging
 from SQLManager.Exception.SqlException import *
 from sqlalchemy.exc import SQLAlchemyError
+from SQLManager import sql_object
 import abc
 
 
 class BaseObject(object):
-    pass
 
-    # __tablename__ = 'BaseObject'
-
-    # id = sql_object.Column(sql_object.Integer, unique=True, nullable=False, primary_key=True)
-    #
     obj_logger = logging.getLogger(__name__)
 
     def __init__(self):
@@ -24,14 +19,16 @@ class BaseObject(object):
 
     @classmethod
     def add(cls, db_obj, need_commit=False):
-        print("in %s add" % __name__)
+        print("in %s add" % cls.__name__)
         if not isinstance(db_obj, sql_object.Model):
-            cls.obj_logger.error("add obj failed, %s is not a db model object" % db_obj)
+            print("add obj failed, %s is not a db model object" % db_obj)
             raise DBException
         is_exist = cls.is_exist(db_obj)
-        if is_exist:
-            cls.obj_logger.error("db has a same object, can not add once more")
-            raise DBException
+        if is_exist is True:
+            print("db has a same object yet, can not add once more")
+            # raise DBException
+            return None
+        print("adding")
         sql_object.session.add(db_obj)
         if need_commit:
             try:
