@@ -5,6 +5,8 @@ from datetime import datetime, date
 from sqlalchemy.orm.dynamic import AppenderQuery
 from flask_sqlalchemy import BaseQuery, DeclarativeMeta
 from SQLManager import sql_object
+from SQLManager.RelationalTableObject.User import User
+from HttpServer.Configure.HttpSetting import *
 
 
 class JsonEncoder(json.JSONEncoder):
@@ -45,12 +47,32 @@ class JsonEncoder(json.JSONEncoder):
 
 class JsonTranslator(BaseTranslator):
 
-    @classmethod
-    def obj2package(cls, obj):
+    response = {
+        'req_state' : False,
+        'title'     : '',
+        'res_code'  : '',
+        'res_msg'   : ''
+    }
+
+    def make_http_response(self, is_success, res_title, res_code=None, msg_obj=None):
+        http_response = self.response.copy()
+        http_response['req_state'] = is_success
+        http_response['title'] = res_title
+        http_response['res_code'] = res_code
+        http_response['res_msg'] = msg_obj
+        return http_response
+
+    def obj2package(self, obj_class, obj):
         pass
 
-    @classmethod
-    def package2obj(cls, package):
-        pass
+    def package2obj(self, obj_class, package):
+        new_obj = None
+        dict_package = eval(package)
+        print(">>>>>>", dict_package)
+        # if isinstance(obj_class, User):
+        req_msg = dict_package[req_msg_body_name]
+        new_obj = User(req_msg[account_n], req_msg[password_n], req_msg[nickname_n])
+        print(new_obj.id, new_obj.account, new_obj.password, new_obj.nickname)
+        return new_obj
 
 
