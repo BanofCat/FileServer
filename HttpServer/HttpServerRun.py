@@ -7,12 +7,18 @@ from SQLManager.Configure.DB_Setting import DB_NAME
 
 
 def url_init(api_obj):
-    from HttpServer.App.v1_0.UserManager import Registrar
+    from HttpServer.App.v1_0.UserManager import Registrar, Login
 
     api_obj.add_resource(
         Registrar,
         '/v1_0/registrar/',
         endpoint='Registrar'
+    )
+
+    api_obj.add_resource(
+        Login,
+        '/v1_0/login/',
+        endpoint='Login'
     )
 
 

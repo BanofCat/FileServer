@@ -22,3 +22,8 @@ class BaseModel(Model):
             if ret is not None:
                 return True
         return False
+
+    @classmethod
+    @abc.abstractmethod
+    def get_by_id(cls, id=-1):
+        return cls.query.filter(cls.id == id).first()

@@ -54,25 +54,30 @@ class JsonTranslator(BaseTranslator):
         'res_msg'   : ''
     }
 
-    def make_http_response(self, is_success, res_title, res_code=None, msg_obj=None):
-        http_response = self.response.copy()
+    @classmethod
+    def make_http_response(cls, is_success, res_title, res_code=None, msg_obj=None):
+        http_response = cls.response.copy()
         http_response['req_state'] = is_success
         http_response['title'] = res_title
         http_response['res_code'] = res_code
         http_response['res_msg'] = msg_obj
         return http_response
 
-    def obj2package(self, obj_class, obj):
+    @classmethod
+    def obj2package(cls, obj_class, obj):
         pass
 
-    def package2obj(self, obj_class, package):
-        new_obj = None
+    @classmethod
+    def package2obj(cls, obj_class, package):
         dict_package = eval(package)
         print(">>>>>>", dict_package)
         # if isinstance(obj_class, User):
-        req_msg = dict_package[req_msg_body_name]
-        new_obj = User(req_msg[account_n], req_msg[password_n], req_msg[nickname_n])
+        req_msg = dict_package[OBJECT_DATA_N]
+        new_obj = User(req_msg[ACCOUNT_N], req_msg[PASSWORD_N], req_msg[NICKNAME_N])
         print(new_obj.id, new_obj.account, new_obj.password, new_obj.nickname)
         return new_obj
 
+    @classmethod
+    def to_dict(cls, args):
+        return eval(args)
 

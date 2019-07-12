@@ -1,7 +1,8 @@
 # -*- coding:utf-8 -*-
 from SQLManager import sql_object
 from SQLManager.RelationalTableObject.BaseObject import BaseObject
-from sqlalchemy.exc import SQLAlchemyError
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 class User(sql_object.Model, BaseObject):
     
@@ -23,8 +24,15 @@ class User(sql_object.Model, BaseObject):
 
     def _set_data(self, account, password, nickname):
         self.account = account
-        self.password = password
+        self.set_password(password)
         self.nickname = nickname
+
+    def check_password(self, password):
+        return check_password_hash(self.password,  password)
+
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+        return True
 
     @classmethod
     def is_exist(cls, db_obj):
@@ -35,3 +43,11 @@ class User(sql_object.Model, BaseObject):
             return False
         print("true----: %s" % db_obj.id)
         return True
+
+    @classmethod
+    def get_by_account(cls, account):
+        return cls.query.filter(cls.account == account).first()
+
+    @classmethod
+    def get_by_nickname(cls, nickname):
+        return cls.query.filter(cls.account == account).first()

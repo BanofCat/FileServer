@@ -29,4 +29,4 @@ SQLALCHEMY_DATABASE_URI = "%s+%s://%s:%s@%s:%s/?charset=utf8" % (
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 # file upload limit
-ALLOW_EXTENSIONS = ('png', 'jpeg', 'svg')
+ALLOW_EXTENSIONS = ('png', 'jpeg', 'svg', 'txt')
