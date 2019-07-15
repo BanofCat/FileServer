@@ -67,3 +67,12 @@ class BaseObject(object):
             sql_object.session.rollback()
             cls.obj_logger.error('commit failed : %s' % (str(e)))
             print("Test: commit failed")
+
+    def to_dict(self):
+        return_dict = {}
+
+        for key in self.__dict__:
+            if key.startswith('_'):
+                continue
+            return_dict[key] = getattr(self, key)
+        return return_dict

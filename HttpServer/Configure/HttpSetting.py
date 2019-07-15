@@ -31,8 +31,16 @@ PERMANENT_SESSION_LIFETIME = timedelta(days=1)
 
 
 
+
 # user id name
 USER_ID_N = 'id'
 
+
 LOGIN_STATE_N = 'is_login'
+
+CAMERA_ID_N = 'id'
+
+ROBOT_ID_N = 'id'
+
+STEREO_ID_N = 'id'
 

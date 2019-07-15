@@ -23,7 +23,7 @@ class Registrar(JsonTranslator):
     def post(self):
         print("%s: post" % __name__)
         args = self.req_data
-        req_user = self.package2obj(User, args)
+        req_user = User.to_obj(args)
         print("end")
         if User.is_exist(req_user):
             return self.make_http_response(False, 'User is exist, can not register any more, maybe you want to login!')

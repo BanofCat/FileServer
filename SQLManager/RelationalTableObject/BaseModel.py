@@ -27,3 +27,9 @@ class BaseModel(Model):
     @abc.abstractmethod
     def get_by_id(cls, id=-1):
         return cls.query.filter(cls.id == id).first()
+
+    @classmethod
+    @abc.abstractmethod
+    def get_all_gen_list(cls):
+        return cls.query.all()
+

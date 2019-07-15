@@ -65,15 +65,20 @@ class WSGIClient(object):
         self.token = self._get_token(ret.json())
 
     def register(self, account, password):
-        data = {
+        obj_data = {
             'account': '%s' % account,
             'password': '%s' % password,
-            'req_msg': '%s' % "123"
+            'nickname': '%s' % "123"
         }
+
+        data = {
+            'obj_data': obj_data
+        }
+
         ret = self.request.post(
             self.url_dict['register_url'],
             headers=self.headers_dict,
-            data=data
+            json=data
         )
         print(ret)
 

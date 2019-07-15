@@ -5,8 +5,6 @@ from datetime import datetime, date
 from sqlalchemy.orm.dynamic import AppenderQuery
 from flask_sqlalchemy import BaseQuery, DeclarativeMeta
 from SQLManager import sql_object
-from SQLManager.RelationalTableObject.User import User
-from HttpServer.Configure.HttpSetting import *
 
 
 class JsonEncoder(json.JSONEncoder):
@@ -64,18 +62,8 @@ class JsonTranslator(BaseTranslator):
         return http_response
 
     @classmethod
-    def obj2package(cls, obj_class, obj):
+    def obj2dict(cls, obj_class, obj):
         pass
-
-    @classmethod
-    def package2obj(cls, obj_class, package):
-        dict_package = eval(package)
-        print(">>>>>>", dict_package)
-        # if isinstance(obj_class, User):
-        req_msg = dict_package[OBJECT_DATA_N]
-        new_obj = User(req_msg[ACCOUNT_N], req_msg[PASSWORD_N], req_msg[NICKNAME_N])
-        print(new_obj.id, new_obj.account, new_obj.password, new_obj.nickname)
-        return new_obj
 
     @classmethod
     def to_dict(cls, args):

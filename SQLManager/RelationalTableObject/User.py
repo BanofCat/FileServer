@@ -3,6 +3,8 @@ from SQLManager import sql_object
 from SQLManager.RelationalTableObject.BaseObject import BaseObject
 from werkzeug.security import generate_password_hash, check_password_hash
 
+from HttpServer.Configure.HttpSetting import *
+
 
 class User(sql_object.Model, BaseObject):
     
@@ -12,7 +14,7 @@ class User(sql_object.Model, BaseObject):
 
     account = sql_object.Column(sql_object.String(32), unique=True, nullable=False)
 
-    password = sql_object.Column(sql_object.String(32), nullable=False)
+    password = sql_object.Column(sql_object.String(128), nullable=False)
 
     nickname = sql_object.Column(sql_object.String(32), unique=True, nullable=False)
 
@@ -50,4 +52,17 @@ class User(sql_object.Model, BaseObject):
 
     @classmethod
     def get_by_nickname(cls, nickname):
-        return cls.query.filter(cls.account == account).first()
+        return cls.query.filter(cls.nickname == nickname).first()
+
+    def to_dict(self, obj):
+        pass
+
+    @classmethod
+    def to_obj(cls, package):
+        dict_package = eval(package)
+        print(">>>>>>", dict_package)
+        # if isinstance(obj_class, User):
+        req_msg = dict_package[OBJECT_DATA_N]
+        new_obj = User(req_msg[ACCOUNT_N], req_msg[PASSWORD_N], req_msg[NICKNAME_N])
+        print(new_obj.id, new_obj.account, new_obj.password, new_obj.nickname)
+        return new_obj

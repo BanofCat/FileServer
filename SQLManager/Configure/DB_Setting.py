@@ -13,7 +13,7 @@
 
 DB_SERVER = 'mysql'
 DB_DRIVER = 'pymysql'
-DB_ACCOUNT = "root"
+DB_ACCOUNT = "ban"
 DB_PASSWORD = "root"
 DB_HOST = "127.0.0.1"
 DB_PORT = "3306"
