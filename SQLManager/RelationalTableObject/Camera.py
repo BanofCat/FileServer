@@ -36,3 +36,7 @@ class Camera(sql_object.Model, BaseObject):
         self.id = id
         self.use_type = use_type
         self.producer = producer
+
+    @classmethod
+    def to_obj(cls, arg_dict):
+        return Camera(arg_dict['id'], arg_dict['use_type'], arg_dict['producer'])

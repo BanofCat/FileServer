@@ -4,6 +4,12 @@ from sqlalchemy.exc import SQLAlchemyError
 from SQLManager import sql_object
 import abc
 
+import json
+import decimal
+from datetime import datetime, date, time
+from sqlalchemy.orm.dynamic import AppenderQuery
+from flask_sqlalchemy import BaseQuery, DeclarativeMeta
+
 
 class BaseObject(object):
 
@@ -68,11 +74,63 @@ class BaseObject(object):
             cls.obj_logger.error('commit failed : %s' % (str(e)))
             print("Test: commit failed")
 
-    def to_dict(self):
-        return_dict = {}
+    # def to_dict(self):
+    #     return_dict = {}
+    #
+    #     for key in self.__dict__:
+    #         if key.startswith('_'):
+    #             continue
+    #         return_dict[key] = getattr(self, key)
+    #     return return_dict
 
-        for key in self.__dict__:
-            if key.startswith('_'):
-                continue
-            return_dict[key] = getattr(self, key)
-        return return_dict
+    @classmethod
+    def to_dict(cls, o):
+        # print("dir: ", dir(o))
+        if isinstance(o, list):
+            obj_counter = 0
+            obj_dict = {}
+            for item in o:
+                if isinstance(item, sql_object.Model):
+                    obj_dict[item.__tablename__ + str(obj_counter)] = BaseObject.to_dict(item)
+                    obj_counter += 1
+                else:
+                    print('can not recognize type: %s' % type(item))
+            print("to_dict_list: ", obj_dict)
+            return obj_dict
+        elif isinstance(o.__class__, DeclarativeMeta):
+            # print("table: ", o.__table__.columns)
+            fields = {}
+            counter = 0
+            # for field in [x for x in dir(o) if not x.startswith('_') and x != 'metadata']:
+            for field in o.__table__.columns:
+                # print('columns:', o.__table__.columns.id.name)
+                data = getattr(o, field.name)
+                counter += 1
+                # try:
+                #     dict(data)
+                #     fields[field] = data
+                # except TypeError:
+
+                if isinstance(data, datetime):
+                    fields[field.name] = data.strftime("%Y-%m-%d %H:%M:%S.%F")[:-3]
+                elif isinstance(data, date):
+                    fields[field.name] = data.strftime("%Y-%m-%d")
+                elif isinstance(data, time):
+                    fields[field.name] = data.strftime("%H:%M:%S")
+                elif isinstance(data, decimal.Decimal):
+                    fields[field.name] = float(data)
+                elif isinstance(data, BaseQuery):
+                    pass
+                elif isinstance(data, AppenderQuery):
+                    pass
+                elif isinstance(data, type):
+                    pass
+                elif isinstance(data, sql_object.Model):
+                    pass
+                elif isinstance(data, str):
+                    fields[field.name] = data
+                else:
+                    fields[field.name] = BaseObject.to_dict(data)
+            print("to_dict: ", fields)
+            return fields
+        return None

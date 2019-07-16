@@ -4,10 +4,12 @@ from SQLManager import sql_object
 from SQLManager.RelationalTableObject.BaseObject import BaseObject
 from SQLManager.Configure import DB_Setting
 from SQLManager.Configure.DB_Setting import DB_NAME
+from HttpServer.Configure.HttpSetting import *
 
 
 def url_init(api_obj):
     from HttpServer.App.v1_0.UserManager import Registrar, Login
+    from HttpServer.App.v1_0.CameraManager import CameraManager
 
     api_obj.add_resource(
         Registrar,
@@ -19,6 +21,12 @@ def url_init(api_obj):
         Login,
         '/v1_0/login/',
         endpoint='Login'
+    )
+
+    api_obj.add_resource(
+        CameraManager,
+        '/v1_0/camera/',
+        endpoint='Camera'
     )
 
 
@@ -55,7 +63,7 @@ sql_object.create_all(app=web_app)
 
 if __name__ == '__main__':
     web_app.run(
-        host='127.0.0.1',
-        port=8889,
+        host=HTTP_HOST,
+        port=HTTP_PORT,
         debug=False
     )

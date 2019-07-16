@@ -44,3 +44,18 @@ ROBOT_ID_N = 'id'
 
 STEREO_ID_N = 'id'
 
+
+
+# file manager
+configure_path = os.path.realpath(__file__)
+project_path = configure_path.rsplit('/', 2)[0]
+UPLOAD_FOLDER = str(project_path) + '/Upload/'
+print('UPLOAD_FOLDER: %s' % UPLOAD_FOLDER)
+
+
+# server info
+
+HTTP_HOST = '127.0.0.1'
+HTTP_PORT = 8889
+UPLOAD_END_POINT = 'upload'
+UPLOAD_ROOT_URI = 'http://%s:%d/v1_0/%s/' % (HTTP_HOST, HTTP_PORT, UPLOAD_END_POINT)

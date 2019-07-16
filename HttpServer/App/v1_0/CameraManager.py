@@ -14,20 +14,20 @@ class CameraManager(JsonTranslator):
 
     # get all camera list or single camera info by id
     def get(self):
+        # print("test>>>>> %s" % Camera.id.name)
         # get specify camera by id
         if CAMERA_ID_N in self.req_dict:
             req_cam = Camera.get_by_id(self.req_dict[CAMERA_ID_N])
             if req_cam is None:
                 return self.make_http_response(False, 'Camera id not exist！')
-            req_cam_dict = self.obj2package(Camera, req_cam)
+            req_cam_dict = Camera.to_dict(req_cam)
             return self.make_http_response(True, 'camera %s info:' % req_cam.id, msg_obj=req_cam_dict)
         # get camera id list
         else:
             req_cam_list = Camera.get_all_gen_list()
-
             if req_cam_list is None:
                 return self.make_http_response(False, 'Camera list is null, please add some first')
-            req_cam_dict_list = self.obj2package_list(Camera, req_cam_list)
+            req_cam_dict_list = Camera.to_dict(req_cam_list)
             return self.make_http_response(True, 'camera list', msg_obj=req_cam_dict_list)
 
     # add new camera or delete one by id
@@ -35,11 +35,10 @@ class CameraManager(JsonTranslator):
 
         print("%s: post" % __name__)
         args = self.req_data
-        req_cam = self.package2obj(Camera, args)
+        req_cam = Camera.to_obj(self.req_dict[OBJECT_DATA_N])
         print("end")
         if Camera.is_exist(req_cam):
-            return self.make_http_response(False,
-                                           'Camera is exist, can not add any more!')
+            return self.make_http_response(False, 'Camera is exist, can not add any more!')
         try:
             Camera.add(req_cam)
         except ObjectNotExist as e:
