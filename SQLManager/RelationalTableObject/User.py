@@ -57,6 +57,9 @@ class User(sql_object.Model, BaseObject):
     def to_dict(self, obj):
         pass
 
+    def get_upload_path(self):
+        return UPLOAD_FOLDER + str(self.id) + '/'
+
     @classmethod
     def to_obj(cls, package):
         dict_package = eval(package)
@@ -66,3 +69,5 @@ class User(sql_object.Model, BaseObject):
         new_obj = User(req_msg[ACCOUNT_N], req_msg[PASSWORD_N], req_msg[NICKNAME_N])
         print(new_obj.id, new_obj.account, new_obj.password, new_obj.nickname)
         return new_obj
+
+

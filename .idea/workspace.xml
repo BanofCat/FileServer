@@ -2,15 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07634709-5e52-4254-962c-d6ed4b1a2a74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/FileManager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exception/HttpException.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/AuthManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/AuthManager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/CameraManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/CameraManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/FileManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/FileManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/GenerateManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/GenerateManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/RobotManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/RobotManager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/StereoManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/StereoManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/UserManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/UserManager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HttpServer/Configure/HttpSetting.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/Configure/HttpSetting.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HttpServer/HttpServerRun.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/HttpServerRun.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HttpServer/Translator/JsonTranslator.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/Translator/JsonTranslator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLManager/Configure/DB_Setting.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/Configure/DB_Setting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLManager/Exception/SqlException.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLManager/Exception/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseObject.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseObject.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/Camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/Camera.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/DH_Optimised.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/DH_Optimised.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/GenerateData.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/GenerateData.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/LocationList.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/LocationList.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/SingleCalibration.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/SingleCalibration.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/StereoCalibration.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/StereoCalibration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/User.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/User.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLManager/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/StereoManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="4" selection-end-column="46" />
+            <state relative-caret-position="-18">
+              <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
               </folding>
@@ -33,10 +47,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HttpServer/Translator/JsonTranslator.py">
+        <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/UserManager.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
-              <caret line="57" column="47" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="47" />
+              <caret line="50" column="80" selection-start-line="50" selection-start-column="80" selection-end-line="50" selection-end-column="80" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
               </folding>
@@ -45,10 +59,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/StereoCalibration.py">
+        <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/User.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="60" column="42" lean-forward="true" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
+            <state relative-caret-position="549">
+              <caret line="32" column="60" lean-forward="true" selection-start-line="32" selection-start-column="60" selection-end-line="32" selection-end-column="60" />
               <folding>
                 <element signature="e#23#56#0" expanded="true" />
               </folding>
@@ -56,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/FileManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="33" column="51" lean-forward="true" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
+            <state relative-caret-position="77">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
               </folding>
@@ -68,22 +82,31 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-171336109/builtins.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Exception/HttpException.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="2816" column="8" selection-start-line="2816" selection-start-column="8" selection-end-line="2816" selection-end-column="8" />
+            <state relative-caret-position="162">
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseObject.py">
+        <entry file="file://$PROJECT_DIR$/Exception/SqlException.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="135" column="19" selection-start-line="135" selection-start-column="19" selection-end-line="135" selection-end-column="19" />
+            <state relative-caret-position="198">
+              <caret line="11" selection-start-line="11" selection-end-line="15" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HttpServer/Translator/JsonTranslator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
               <folding>
-                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#0#63#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,8 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/CameraManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="48" />
+            <state relative-caret-position="549">
+              <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
               </folding>
@@ -104,34 +127,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HttpServer/Configure/HttpSetting.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="60" column="15" selection-start-line="60" selection-end-line="60" selection-end-column="15" />
-              <folding>
-                <element signature="e#23#32#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="36">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HttpServer/Translator/BaseTranslator.py">
+        <entry file="file://$PROJECT_DIR$/SQLManager/Configure/DB_Setting.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+            <state relative-caret-position="90">
+              <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HttpServer/HttpServerRun.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="68" column="5" lean-forward="true" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
+                <element signature="e#23#53#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -149,8 +157,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>enum</find>
-      <find>s</find>
       <find>integer</find>
       <find>DH_Optimised</find>
       <find>InverseTest</find>
@@ -179,6 +185,8 @@
       <find>Camera</find>
       <find>Robot</find>
       <find>req_rob</find>
+      <find>create_app</find>
+      <find>test_user</find>
     </findStrings>
     <replaceStrings>
       <replace>DH_Optimised</replace>
@@ -218,23 +226,24 @@
         <option value="$PROJECT_DIR$/../.pyenv/versions/env364/lib/python3.6/site-packages/flask_restful/reqparse.py" />
         <option value="$PROJECT_DIR$/HttpServer/templates/registrar.html" />
         <option value="$PROJECT_DIR$/HttpServer/Translator/BaseTranslator.py" />
-        <option value="$PROJECT_DIR$/HttpServer/App/v1_0/AuthManager.py" />
-        <option value="$PROJECT_DIR$/SQLManager/Configure/DB_Setting.py" />
         <option value="$PROJECT_DIR$/HttpServer/test/HttpClient.py" />
         <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseModel.py" />
         <option value="$PROJECT_DIR$/HttpServer/App/v1_0/RobotManager.py" />
         <option value="$PROJECT_DIR$/HttpServer/App/v1_0/GenerateManager.py" />
+        <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/Camera.py" />
+        <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseObject.py" />
+        <option value="$PROJECT_DIR$/HttpServer/HttpServerRun.py" />
+        <option value="$PROJECT_DIR$/HttpServer/App/v1_0/AuthManager.py" />
+        <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/StereoCalibration.py" />
+        <option value="$PROJECT_DIR$/HttpServer/Configure/HttpSetting.py" />
+        <option value="$PROJECT_DIR$/SQLManager/Configure/DB_Setting.py" />
         <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/User.py" />
         <option value="$PROJECT_DIR$/HttpServer/App/v1_0/UserManager.py" />
-        <option value="$PROJECT_DIR$/HttpServer/Translator/JsonTranslator.py" />
-        <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/Camera.py" />
-        <option value="$PROJECT_DIR$/HttpServer/App/v1_0/StereoManager.py" />
-        <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseObject.py" />
         <option value="$PROJECT_DIR$/HttpServer/App/v1_0/CameraManager.py" />
-        <option value="$PROJECT_DIR$/HttpServer/Configure/HttpSetting.py" />
-        <option value="$PROJECT_DIR$/HttpServer/HttpServerRun.py" />
-        <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/StereoCalibration.py" />
+        <option value="$PROJECT_DIR$/HttpServer/Translator/JsonTranslator.py" />
+        <option value="$PROJECT_DIR$/HttpServer/App/v1_0/StereoManager.py" />
         <option value="$PROJECT_DIR$/HttpServer/App/v1_0/FileManager.py" />
+        <option value="$PROJECT_DIR$/Exception/HttpException.py" />
       </list>
     </option>
   </component>
@@ -263,32 +272,12 @@
             <path>
               <item name="FileServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="FileServer" type="462c0819:PsiDirectoryNode" />
-              <item name="HttpServer" type="462c0819:PsiDirectoryNode" />
+              <item name="Exception" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FileServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="FileServer" type="462c0819:PsiDirectoryNode" />
               <item name="HttpServer" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FileServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FileServer" type="462c0819:PsiDirectoryNode" />
-              <item name="HttpServer" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
-              <item name="v1_0" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FileServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FileServer" type="462c0819:PsiDirectoryNode" />
-              <item name="HttpServer" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FileServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FileServer" type="462c0819:PsiDirectoryNode" />
-              <item name="HttpServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Translator" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FileServer" type="b2602c69:ProjectViewProjectNode" />
@@ -300,18 +289,6 @@
               <item name="FileServer" type="462c0819:PsiDirectoryNode" />
               <item name="SQLManager" type="462c0819:PsiDirectoryNode" />
               <item name="Configure" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FileServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FileServer" type="462c0819:PsiDirectoryNode" />
-              <item name="SQLManager" type="462c0819:PsiDirectoryNode" />
-              <item name="Exception" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FileServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FileServer" type="462c0819:PsiDirectoryNode" />
-              <item name="SQLManager" type="462c0819:PsiDirectoryNode" />
-              <item name="RelationalTableObject" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -327,6 +304,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/SQLManager/Exception" />
       <recent name="$PROJECT_DIR$/SQLManager" />
     </key>
@@ -473,6 +451,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-6" width="1855" height="1086" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20796943" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -500,20 +479,9 @@
     <option name="LAST_COMMIT_MESSAGE" value="save 20190705-1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../.pyenv/versions/env364/lib/python3.6/site-packages/sqlalchemy/util/_collections.py" />
-    <entry file="file://$PROJECT_DIR$/SQLManager/DBManager.py" />
-    <entry file="file://$PROJECT_DIR$/../.PyCharmCE2017.3/system/python_stubs/-171336109/builtins.py" />
-    <entry file="file://$PROJECT_DIR$/SQLManager/Configure/LogSetting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../.pyenv/versions/env364/lib/python3.6/site-packages/sqlalchemy/orm/relationships.py" />
     <entry file="file://$PROJECT_DIR$/../.pyenv/versions/env364/lib/python3.6/site-packages/pymysql/cursors.py" />
     <entry file="file://$PROJECT_DIR$/../.pyenv/versions/env364/lib/python3.6/site-packages/sqlalchemy/sql/selectable.py" />
-    <entry file="file://$PROJECT_DIR$/SQLManager/Exception/__init__.py">
+    <entry file="file://$PROJECT_DIR$/Exception/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/../.pyenv/versions/env364/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py" />
@@ -522,13 +490,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="3" column="46" lean-forward="true" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SQLManager/Exception/SqlException.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -591,23 +552,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../.pyenv/versions/env364/lib/python3.6/site-packages/requests/models.py" />
     <entry file="file://$PROJECT_DIR$/../.pyenv/versions/env364/lib/python3.6/site-packages/werkzeug/datastructures.py" />
-    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/AuthManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1276">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SQLManager/Configure/DB_Setting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HttpServer/test/HttpClient.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1711">
@@ -620,16 +564,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../.pyenv/versions/env364/lib/python3.6/site-packages/sqlalchemy/orm/query.py" />
     <entry file="file://$PROJECT_DIR$/../.pyenv/versions/env364/lib/python3.6/site-packages/sqlalchemy/sql/sqltypes.py" />
-    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/User.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1043">
-          <caret line="60" column="14" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="14" />
-          <folding>
-            <element signature="e#23#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/GenerateManager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1014">
@@ -662,87 +596,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../.PyCharmCE2018.3/system/python_stubs/-171336109/builtins.py" />
-    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/UserManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
-          <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/RobotManager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="369">
           <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#0#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/Camera.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="40" column="14" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseObject.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="135" column="19" selection-start-line="135" selection-start-column="19" selection-end-line="135" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServer/HttpServerRun.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="68" column="5" lean-forward="true" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServer/Configure/HttpSetting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="60" column="15" selection-start-line="60" selection-end-line="60" selection-end-column="15" />
-          <folding>
-            <element signature="e#23#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/StereoCalibration.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="60" column="42" lean-forward="true" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
-          <folding>
-            <element signature="e#23#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/StereoManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="4" selection-end-column="46" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
           </folding>
@@ -759,10 +616,96 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServer/Upload/15/lua2.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServer/Upload/15/e.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServer/Upload/15/d.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServer/Upload/15/c.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="10" lean-forward="true" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseObject.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="76" selection-start-line="76" selection-end-line="83" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/AuthManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/Camera.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/StereoCalibration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#23#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-171336109/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="132" column="4" selection-start-line="132" selection-start-column="4" selection-end-line="132" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServer/HttpServerRun.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3">
+          <caret line="60" column="46" lean-forward="true" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLManager/Configure/DB_Setting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <folding>
+            <element signature="e#23#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/HttpServer/Translator/JsonTranslator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="57" column="47" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="47" />
+        <state relative-caret-position="198">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
           </folding>
@@ -771,28 +714,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/CameraManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="48" />
+        <state relative-caret-position="549">
+          <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-171336109/builtins.py">
+    <entry file="file://$PROJECT_DIR$/HttpServer/Configure/HttpSetting.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="2816" column="8" selection-start-line="2816" selection-start-column="8" selection-end-line="2816" selection-end-column="8" />
+        <state relative-caret-position="36">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/UserManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="50" column="80" selection-start-line="50" selection-start-column="80" selection-end-line="50" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/User.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="32" column="60" lean-forward="true" selection-start-line="32" selection-start-column="60" selection-end-line="32" selection-end-column="60" />
+          <folding>
+            <element signature="e#23#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/StereoManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-18">
+          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/FileManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="33" column="51" lean-forward="true" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
+        <state relative-caret-position="77">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Exception/SqlException.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" selection-start-line="11" selection-end-line="15" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Exception/HttpException.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
         </state>
       </provider>
     </entry>

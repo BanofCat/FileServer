@@ -13,8 +13,6 @@ from SQLManager.RelationalTableObject.SingleCalibration import SingleCalibration
 from SQLManager.RelationalTableObject.StereoCalibration import StereoCalibration
 from SQLManager.RelationalTableObject.DH_Optimised import DH_Model
 from SQLManager.Configure.DB_Setting import DB_NAME
-from SQLManager.Exception.SqlException import *
-
 
 if __name__ == '__main__':
 

@@ -2,7 +2,7 @@
 from SQLManager import sql_object
 from SQLManager.RelationalTableObject.BaseObject import BaseObject
 from SQLManager.RelationalTableObject.Camera import Camera
-from SQLManager.Exception.SqlException import ObjectNotExist
+from Exception import ObjectNotExist
 
 
 class SingleCalibration(sql_object.Model, BaseObject):

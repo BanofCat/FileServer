@@ -10,6 +10,8 @@ from HttpServer.Configure.HttpSetting import *
 def url_init(api_obj):
     from HttpServer.App.v1_0.UserManager import Registrar, Login
     from HttpServer.App.v1_0.CameraManager import CameraManager
+    from HttpServer.App.v1_0.FileManager import FileUpload, FileDownload
+    from HttpServer.App.v1_0.StereoManager import StereoManager
 
     api_obj.add_resource(
         Registrar,
@@ -28,6 +30,25 @@ def url_init(api_obj):
         '/v1_0/camera/',
         endpoint='Camera'
     )
+
+    api_obj.add_resource(
+        FileUpload,
+        '/v1_0/%s/' % UPLOAD_END_POINT,
+        endpoint='Upload'
+    )
+
+    api_obj.add_resource(
+        FileDownload,
+        '/v1_0/%s/<string:filename>' % DOWNLOAD_END_POINT,
+        endpoint='Download'
+    )
+
+    api_obj.add_resource(
+        StereoManager,
+        '/v1_0/stereo/',
+        endpoint='Stereo'
+    )
+
 
 
 def create_app(configure_file):

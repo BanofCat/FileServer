@@ -1,6 +1,5 @@
 # -*- coding:utf-8 -*-
 import os
-from datetime import timedelta
 
 # 请求数据包key
 REQ_MSG_BODY_NAME = 'req_msg'
@@ -21,12 +20,6 @@ PASSWORD_CONFIRM_N = 'password_confirm'
 
 # 请求昵称key
 NICKNAME_N = 'nickname'
-
-# 24位随机字符， 每次服务器启动则session清除
-SECRET_KEY = os.urandom(24)
-
-# session保存时间
-PERMANENT_SESSION_LIFETIME = timedelta(days=1)
 
 
 
@@ -58,4 +51,8 @@ print('UPLOAD_FOLDER: %s' % UPLOAD_FOLDER)
 HTTP_HOST = '127.0.0.1'
 HTTP_PORT = 8889
 UPLOAD_END_POINT = 'upload'
+DOWNLOAD_END_POINT = 'download'
 UPLOAD_ROOT_URI = 'http://%s:%d/v1_0/%s/' % (HTTP_HOST, HTTP_PORT, UPLOAD_END_POINT)
+DOWNLOAD_ROOT_URI = 'http://%s:%d/v1_0/%s/' % (HTTP_HOST, HTTP_PORT, DOWNLOAD_END_POINT)
+
+

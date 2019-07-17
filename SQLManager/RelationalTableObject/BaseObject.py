@@ -1,10 +1,8 @@
 import logging
-from SQLManager.Exception.SqlException import *
 from sqlalchemy.exc import SQLAlchemyError
 from SQLManager import sql_object
 import abc
 
-import json
 import decimal
 from datetime import datetime, date, time
 from sqlalchemy.orm.dynamic import AppenderQuery

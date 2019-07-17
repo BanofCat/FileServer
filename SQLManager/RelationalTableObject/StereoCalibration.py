@@ -2,8 +2,9 @@
 from SQLManager import sql_object
 from SQLManager.RelationalTableObject.BaseObject import BaseObject
 from SQLManager.RelationalTableObject.Camera import Camera
-from SQLManager.Exception.SqlException import ObjectNotExist
+from Exception import ObjectNotExist
 from HttpServer.Configure.HttpSetting import *
+from SQLManager.RelationalTableObject.User import User
 
 
 class StereoCalibration(sql_object.Model, BaseObject):
@@ -51,12 +52,20 @@ class StereoCalibration(sql_object.Model, BaseObject):
             raise ObjectNotExist("[Error]:camera is not exits which id is %s" % r_camera_id)
         self.l_camera_id = l_camera_id
         self.r_camera_id = r_camera_id
-        if not os.path.exists(l_cam_matrix):
+
+        # default
+        test_user = User.get_by_account('ban')
+
+        l_abs_path = test_user.get_upload_path() + l_cam_matrix
+        if not os.path.exists(l_abs_path):
             raise ObjectNotExist("[Error]: l_cam_matrix file is not exist, please upload first")
-        self.l_cam_matrix = UPLOAD_ROOT_URI + l_cam_matrix
-        if not os.path.exists(r_cam_matrix):
+        self.l_cam_matrix = DOWNLOAD_ROOT_URI + l_cam_matrix
+
+        r_abs_path = test_user.get_upload_path() + r_cam_matrix
+        if not os.path.exists(r_abs_path):
             raise ObjectNotExist("[Error]: r_cam_matrix file is not exist, please upload first")
-        self.r_cam_matrix = UPLOAD_ROOT_URI + r_cam_matrix
+        self.r_cam_matrix = DOWNLOAD_ROOT_URI + r_cam_matrix
+
         self.l_dist_coeffs = l_dist_coeffs
         self.r_dist_coeffs = r_dist_coeffs
         self.rt_cam_a2_cam_b = rt_cam_a2_cam_b

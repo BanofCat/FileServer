@@ -1,7 +1,6 @@
 from HttpServer.Translator.JsonTranslator import JsonTranslator
 from flask_restful import reqparse
 from SQLManager.RelationalTableObject.Robot import Robot
-from SQLManager.Exception.SqlException import *
 from HttpServer.Configure.HttpSetting import *
 
 

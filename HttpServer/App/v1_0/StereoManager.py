@@ -1,8 +1,8 @@
 from HttpServer.Translator.JsonTranslator import JsonTranslator
 from flask_restful import reqparse
 from SQLManager.RelationalTableObject.StereoCalibration import StereoCalibration
-from SQLManager.Exception.SqlException import *
 from HttpServer.Configure.HttpSetting import *
+from flask import session
 
 
 class StereoManager(JsonTranslator):
@@ -10,12 +10,13 @@ class StereoManager(JsonTranslator):
     def __init__(self):
         self.req_data = reqparse.request.data
         self.req_dict = self.to_dict(self.req_data)
+        self.user_id = session.get(USER_ID_N)
         super(StereoManager, self).__init__()
 
     # get all StereoCalibration list or single StereoCalibration info by id
     def get(self):
         # get specify StereoCalibration by id
-        if StereoManager.__table__.columns.id.name in self.req_dict:
+        if StereoCalibration.__table__.columns.id.name in self.req_dict:
             req_obj = StereoCalibration.get_by_id(self.req_dict[STEREO_ID_N])
             if req_obj is None:
                 return self.make_http_response(False, 'StereoCalibration id not exist！')
@@ -27,7 +28,7 @@ class StereoManager(JsonTranslator):
 
             if req_obj_list is None:
                 return self.make_http_response(False, 'StereoCalibration list is null, please add some first')
-            req_rob_dict_list = self.obj2package_list(StereoCalibration, req_obj_list)
+            req_rob_dict_list = StereoCalibration.to_dict(req_obj_list)
             return self.make_http_response(True, 'StereoCalibration list', msg_obj=req_rob_dict_list)
 
     # add new StereoCalibration or delete one by id

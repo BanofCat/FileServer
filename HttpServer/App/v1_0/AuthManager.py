@@ -4,7 +4,6 @@ from SQLManager.RelationalTableObject.User import User
 from HttpServer.Translator.BaseTranslator import BaseTranslator
 
 
-
 class AuthManager(object):
 
     login_id_list = []
