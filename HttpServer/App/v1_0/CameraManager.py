@@ -1,7 +1,8 @@
 from HttpServer.Translator.JsonTranslator import JsonTranslator
 from flask_restful import reqparse
 from SQLManager.RelationalTableObject.Camera import Camera
-from HttpServer.Configure.HttpSetting import *
+from Exception.SqlException import ObjectNotExist
+from Configure.HttpSetting import *
 
 
 class CameraManager(JsonTranslator):
@@ -14,7 +15,7 @@ class CameraManager(JsonTranslator):
 
     # get all camera list or single camera info by id
     def get(self):
-        print('%s: get', __name__)
+        self.logger.info('%s: get', __name__)
         # get specify camera by id
         if CAMERA_ID_N in self.req_dict:
             req_cam = Camera.get_by_id(self.req_dict[CAMERA_ID_N])
@@ -33,9 +34,8 @@ class CameraManager(JsonTranslator):
     # add new camera or delete one by id
     def post(self):
 
-        print("%s: post" % __name__)
+        self.logger.info("%s: post" % __name__)
         req_cam = Camera.to_obj(self.req_dict[OBJECT_DATA_N])
-        print("end")
         if Camera.is_exist(req_cam):
             return self.make_http_response(False, 'Camera is exist, can not add any more!')
         try:

@@ -1,5 +1,8 @@
+# -*- coding:utf-8 -*-
+
 import requests
 import time
+from socketIO_client import SocketIO, BaseNamespace, LoggingNamespace
 import os
 
 
@@ -23,6 +26,8 @@ class WSGIClient(object):
         'logout_url': 'http://%s:%d/v1_0/logout/' % (IP, PORT),
         # 'status_url': 'http://%s:%d/robotstatus/on' % (IP, PORT),
         # 'status_ur_l': 'http://%s:%d/robotstatus/off' % (IP, PORT)
+        'camera_url': 'http://%s:%d/v1_0/camera/' % (IP, PORT),
+        'stereo_url': 'http://%s:%d/v1_0/stereo/' % (IP, PORT),
     }
 
     headers_dict = {
@@ -38,20 +43,26 @@ class WSGIClient(object):
         self.token = None
         self.ws = None
         self.counter = 1
+        self.session = self.request.session()
 
-    def login(self, account, password, robot_type, robot_joints):
+    def login(self, account, password):
         data = {
-            'account': '%s' % account,
-            'password': '%s' % password,
-            'robot_type': '%s' % robot_type,
-            'robot_joints': '%d' % robot_joints
+            'is_login' : True,
+            'account'   : '%s' % account,
+            'password'  : '%s' % password,
         }
-        ret = self.request.post(
+        # sn = self.request.session()
+        # if id != -1:
+        #     sn.
+        ret = self.session.post(
             self.url_dict['login_url'],
             headers=self.headers_dict,
-            data=data
+            json=data
         )
-        self.token = self._get_token(ret.json())
+        print('>>>', ret.json(), ret.cookies, type(ret))
+        # print('<<<:', )
+        # self.token = self._get_token(ret.json())
+        # return
 
     def logout(self):
         header = {
@@ -66,9 +77,53 @@ class WSGIClient(object):
 
     def register(self, account, password):
         obj_data = {
-            'account': '%s' % account,
-            'password': '%s' % password,
-            'nickname': '%s' % "123"
+            'account': '%s'.encode() % account,
+            'password': '%s'.encode() % password,
+            'nickname': '%s'.encode() % "asd"
+        }
+        data = {
+            'obj_data': obj_data
+        }
+        ret = self.request.post(
+            self.url_dict['register_url'],
+            headers=self.headers_dict,
+            json=data
+        )
+        print ret.json()
+
+    def stereo_set(self, l_id, r_id, l_cam_file=None, r_cam_file=None):
+        obj_data = {
+            'l_camera_id': l_id,
+            'r_camera_id': r_id,
+            'l_cam_matrix': l_cam_file,
+            'r_cam_matrix': r_cam_file
+        }
+        data = {
+            'obj_data': obj_data
+        }
+        ret = self.session.post(
+            self.url_dict['stereo_url'],
+            headers=self.headers_dict,
+            json=data
+        )
+        print ret.json()
+
+    def stereo_get(self):
+        data = {
+            # 'id': 'abc'
+        }
+        ret = self.request.get(
+            self.url_dict['stereo_url'],
+            headers=self.headers_dict,
+            json=data
+        )
+        print ret.json()
+
+    def camera_post(self):
+        obj_data = {
+            'id': 'abc',
+            'use_type': 'L',
+            'producer': 'RR'
         }
 
         data = {
@@ -76,11 +131,40 @@ class WSGIClient(object):
         }
 
         ret = self.request.post(
-            self.url_dict['register_url'],
+            self.url_dict['camera_url'],
             headers=self.headers_dict,
             json=data
         )
-        print(ret)
+        print ret.json()
+
+    def camera_post1(self):
+        obj_data = {
+            'id': 'def',
+            'use_type': 'R',
+            'producer': 'KENT'
+        }
+
+        data = {
+            'obj_data': obj_data
+        }
+
+        ret = self.request.post(
+            self.url_dict['camera_url'],
+            headers=self.headers_dict,
+            json=data
+        )
+        print ret.json()
+
+    def camera_get(self):
+        data = {
+            # 'id': 'abc'
+        }
+        ret = self.session.get(
+            self.url_dict['camera_url'],
+            headers=self.headers_dict,
+            json=data
+        )
+        print ret.json()
 
     def check_control(self):
         header = {
@@ -133,15 +217,15 @@ class WSGIClient(object):
         self.ws.emit('leave', "on")
 
     def _get_token(self, data):
-        print('>>> %s' % data)
+        print '>>> %s' % data
         if isinstance(data, str):
-            print('Args invalid')
+            print 'Args invalid'
             return None
         if 'data' in data and 'token' in data['data']:
-            print("===%s" % data['data']['token'])
+            print "===%s" % data['data']['token']
             return data['data']['token']
         else:
-            print('get token failed')
+            print 'get token failed'
         return None
 
     def get_point(self, id):
@@ -225,10 +309,10 @@ class WSGIClient(object):
     #         return None
 
     def files_upload(self, file_list):
-        print('files_upload: %s' % str(file_list))
+        print 'files_upload: %s' % str(file_list)
         files_dict = {}
         for item in file_list:
-            print('item: %s' % str(item))
+            print 'item: %s' % str(item)
             if not os.path.isfile(item):
                 return False
             files_dict[os.path.basename(item)] = open(item, 'rb')
@@ -236,12 +320,12 @@ class WSGIClient(object):
         # files_dict = {
         #     'lua1.lua': file_open
         # }
-        print('---', files_dict)
+        print '---', files_dict
         # print '---', files_dict['lua1.lua'].read()
 
         header = {
             # 'Content-Type': 'multipart/form-data',
-            'Authorization': 'jwt %s' % self.token
+            # 'Authorization': 'jwt %s' % self.token
         }
         ret = self.request.post(
             self.url_dict['upload_url'],
@@ -251,7 +335,7 @@ class WSGIClient(object):
         print('files_upload: %s' % ret.json())
 
     def file_download(self, filename, file_dir):
-        print('files_download: %s' % str(filename))
+        print 'files_download: %s' % str(filename)
         if not os.path.exists(file_dir):
             print('Download directory is not exist')
             return None
@@ -259,19 +343,20 @@ class WSGIClient(object):
             # 'Content-Type': 'multipart/form-data',
             'Authorization': 'jwt %s' % self.token
         }
-        filename_list = self.get_download_list()
-        if filename not in filename_list:
-            print('Failed to download, without this filename')
-            return None
-        download_file_stream = self.request.get(
+        # filename_list = self.get_download_list()
+        # if filename not in filename_list:
+        #     print('Failed to download, without this filename')
+        #     return None
+        download_file_stream = self.session.get(
             self.url_dict['download_url'] + filename,
             headers=header,
             stream=True
         )
+        # print('ret:', download_file_stream.json())
         self.save_file_from_http_response(download_file_stream, file_dir, filename)
 
     def file_download_all(self, file_dir):
-        print('file_download_all: %s' % str(file_dir))
+        print 'file_download_all: %s' % str(file_dir)
         if not os.path.exists(file_dir):
             print('Download directory is not exist')
             return None
@@ -291,6 +376,13 @@ class WSGIClient(object):
     def save_file_from_http_response(self, download_file_stream, file_dir, filename):
         # print('download_req:', download_file_stream.content)
         # print('download_req type:', type(download_file_stream.content))
+        # if isinstance(download_file_stream, )
+        # print('res type: ', type(download_file_stream))
+        # print('res type111: ', type(download_file_stream.content))
+        # print('res type111: ', download_file_stream.headers)
+        if download_file_stream.headers['Content-Type'] == 'application/json':
+            print('ret: ', download_file_stream.json())
+            return None
         if not file_dir.endswith('/'):
             file_absolute_path = file_dir + '/' + filename
         else:
@@ -486,7 +578,7 @@ def upload_test():
 
     file_list = (
         './upload_test/lua1.lua',
-        './upload_test/lua2.lua',
+        './upload_test/lua2.txt',
         './upload_test/lua3.lua',
         './upload_test/lua4.lua',
         './upload_test/lua5.lua',
@@ -550,10 +642,35 @@ admin_robot_joints = 4
 
 if __name__ == '__main__':
     web_client = WSGIClient()
-    web_client.register('ban', '123123')
-    # upload_test()
-    # download_test()
-    # delete_test()
-    # run_file_test()
-    # goja_test()
-    # get_status_test()
+    # 注册
+    # web_client.register('ban', '123123')
+
+    # 登录
+    web_client.login('ban', 123123)
+
+    # 添加相机， 重复添加报错， 每次返回数据包包含 请求结果信息
+    # web_client.camera_post()
+    # web_client.camera_post1()
+
+    # 获取相机列表
+    # web_client.camera_get()
+
+    # 上传文件， 用户绑定
+    # web_client.files_upload(['/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/lua2.txt',
+    #                          '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/c.txt',
+    #                          '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/a.png',
+    #                          '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/d.txt',
+    #                          '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/e.txt'
+    #                          ])
+
+    # 添加双目标定结果表信息
+    web_client.stereo_set('abc', 'def', 'lua2.txt', 'e.txt')
+    #
+    # # 获取双目标定结果表信息
+    # web_client.stereo_get()
+
+    # 下载文件
+    # web_client.file_download('c.txt', './download_test/')
+
+
+

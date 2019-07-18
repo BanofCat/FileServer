@@ -1,8 +1,10 @@
 from HttpServer.Translator.JsonTranslator import JsonTranslator
 from flask_restful import reqparse
 from SQLManager.RelationalTableObject.StereoCalibration import StereoCalibration
-from HttpServer.Configure.HttpSetting import *
 from flask import session
+from Configure.HttpSetting import *
+from Exception.SqlException import ObjectNotExist
+from HttpServer.App.v1_0.AuthManager import AuthManager
 
 
 class StereoManager(JsonTranslator):
@@ -32,15 +34,18 @@ class StereoManager(JsonTranslator):
             return self.make_http_response(True, 'StereoCalibration list', msg_obj=req_rob_dict_list)
 
     # add new StereoCalibration or delete one by id
-    def post(self):
-
-        print("%s: post" % __name__)
-        req_obj = StereoCalibration.to_obj(self.req_dict[OBJECT_DATA_N])
-        print("end")
-        if StereoCalibration.is_exist(req_obj):
-            return self.make_http_response(False, 'StereoCalibration is exist, can not add any more!')
+    @AuthManager.user_auth
+    def post(self, req_user):
+        self.logger.info("%s: post" % __name__)
         try:
+            if GENERA_ID_N not in self.req_dict:
+                return self.make_http_response(False, 'you should set generate data table before you add this')
+
+            req_obj = StereoCalibration.to_obj(self.req_dict[OBJECT_DATA_N], req_user)
+            if StereoCalibration.is_exist(req_obj):
+                return self.make_http_response(False, 'StereoCalibration is exist, can not add any more!')
             StereoCalibration.add(req_obj)
         except ObjectNotExist as e:
+            self.logger.error(e.what())
             return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'Add StereoCalibration Success!')

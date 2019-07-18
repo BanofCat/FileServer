@@ -1,7 +1,6 @@
 from HttpServer.Translator.JsonTranslator import JsonTranslator
 from flask_restful import reqparse
 from SQLManager.RelationalTableObject.Robot import Robot
-from HttpServer.Configure.HttpSetting import *
 
 
 class RobotManager(JsonTranslator):
@@ -32,10 +31,9 @@ class RobotManager(JsonTranslator):
     # add new Robot or delete one by id
     def post(self):
 
-        print("%s: post" % __name__)
+        self.logger.info("%s: post" % __name__)
         args = self.req_data
         req_rob = self.package2obj(Robot, args)
-        print("end")
         if Robot.is_exist(req_rob):
             return self.make_http_response(False,
                                            'Robot is exist, can not add any more!')

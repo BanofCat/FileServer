@@ -2,9 +2,9 @@ from flask_restful import Api
 from flask import Flask
 from SQLManager import sql_object
 from SQLManager.RelationalTableObject.BaseObject import BaseObject
-from SQLManager.Configure import DB_Setting
-from SQLManager.Configure.DB_Setting import DB_NAME
-from HttpServer.Configure.HttpSetting import *
+from Configure import DB_Setting
+from Configure.DB_Setting import DB_NAME
+from Configure.HttpSetting import *
 
 
 def url_init(api_obj):

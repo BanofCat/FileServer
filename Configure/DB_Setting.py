@@ -37,3 +37,9 @@ SECRET_KEY = os.urandom(24)
 
 # session保存时间
 PERMANENT_SESSION_LIFETIME = timedelta(days=1)
+
+# logger
+configure_path = os.path.realpath(__file__)
+project_path = configure_path.rsplit('/', 2)[0]
+DB_LOGGER_NAME = 'db_logger'
+LOG_CONFIG_FILE = str(project_path) + '/Configure/logging.conf'

@@ -2,8 +2,7 @@
 from SQLManager import sql_object
 from SQLManager.RelationalTableObject.BaseObject import BaseObject
 from werkzeug.security import generate_password_hash, check_password_hash
-
-from HttpServer.Configure.HttpSetting import *
+from Configure.HttpSetting import *
 
 
 class User(sql_object.Model, BaseObject):
@@ -35,6 +34,9 @@ class User(sql_object.Model, BaseObject):
     def set_password(self, password):
         self.password = generate_password_hash(password)
         return True
+
+    def is_own_file(self, filename):
+        return os.path.exists(UPLOAD_FOLDER + str(self.id) + '/' + filename)
 
     @classmethod
     def is_exist(cls, db_obj):

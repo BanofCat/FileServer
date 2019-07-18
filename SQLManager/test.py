@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 from SQLManager import sql_object
 from flask import Flask
-from SQLManager.Configure import DB_Setting
+from Configure import DB_Setting
 from SQLManager.RelationalTableObject.User import User
 from SQLManager.RelationalTableObject.Camera import Camera
 from SQLManager.RelationalTableObject.Robot import Robot
@@ -12,7 +12,7 @@ from SQLManager.RelationalTableObject.LocationList import LocationList
 from SQLManager.RelationalTableObject.SingleCalibration import SingleCalibration
 from SQLManager.RelationalTableObject.StereoCalibration import StereoCalibration
 from SQLManager.RelationalTableObject.DH_Optimised import DH_Model
-from SQLManager.Configure.DB_Setting import DB_NAME
+from Configure import DB_NAME
 
 if __name__ == '__main__':
 

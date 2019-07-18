@@ -1,7 +1,6 @@
 from HttpServer.Translator.JsonTranslator import JsonTranslator
 from flask_restful import reqparse
 from SQLManager.RelationalTableObject.GenerateData import GenerateData
-from HttpServer.Configure.HttpSetting import *
 
 
 class GenerateManager(JsonTranslator):
@@ -32,10 +31,9 @@ class GenerateManager(JsonTranslator):
     # add new GenerateData or delete one by id
     def post(self):
 
-        print("%s: post" % __name__)
+        self.logger.info("%s: post" % __name__)
         args = self.req_data
         req_cam = self.package2obj(GenerateData, args)
-        print("end")
         if GenerateData.is_exist(req_cam):
             return self.make_http_response(False, 'GenerateData is exist, can not add any more!')
         try:
