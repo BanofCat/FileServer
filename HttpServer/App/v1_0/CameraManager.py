@@ -3,6 +3,7 @@ from flask_restful import reqparse
 from SQLManager.RelationalTableObject.Camera import Camera
 from Exception.SqlException import ObjectNotExist
 from Configure.HttpSetting import *
+from SQLManager.RelationalTableObject.LocationList import LocationList
 
 
 class CameraManager(JsonTranslator):
@@ -14,24 +15,11 @@ class CameraManager(JsonTranslator):
         super(CameraManager, self).__init__()
 
     # get all camera list or single camera info by id
-    def get(self):
-        self.logger.info('%s: get', __name__)
-        # get specify camera by id
-        if CAMERA_ID_N in self.req_dict:
-            req_cam = Camera.get_by_id(self.req_dict[CAMERA_ID_N])
-            if req_cam is None:
-                return self.make_http_response(False, 'Camera id not exist！')
-            req_cam_dict = Camera.to_dict(req_cam)
-            return self.make_http_response(True, 'camera %s info:' % req_cam.id, msg_obj=req_cam_dict)
-        # get camera id list
-        else:
-            req_cam_list = Camera.get_all_gen_list()
-            if req_cam_list is None:
-                return self.make_http_response(False, 'Camera list is null, please add some first')
-            req_cam_dict_list = Camera.to_dict(req_cam_list)
-            return self.make_http_response(True, 'camera list', msg_obj=req_cam_dict_list)
+    def get(self, id=None):
+        self.logger.info('%s: get' % __name__)
+        return self.get_base(Camera, id)
 
-    # add new camera or delete one by id
+    # add new camera
     def post(self):
 
         self.logger.info("%s: post" % __name__)
@@ -43,3 +31,11 @@ class CameraManager(JsonTranslator):
         except ObjectNotExist as e:
             return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'Add Camera Success!')
+
+    # update camera data
+    def put(self):
+        pass
+
+    # delete camera item
+    def delete(self):
+        pass

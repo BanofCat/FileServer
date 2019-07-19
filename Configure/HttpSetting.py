@@ -39,6 +39,10 @@ ROBOT_ID_N = 'id'
 
 STEREO_ID_N = 'id'
 
+SINGLE_ID_N = 'id'
+
+REQ_ID_N = 'id'
+
 
 
 # file manager

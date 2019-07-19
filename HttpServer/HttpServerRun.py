@@ -27,8 +27,14 @@ def url_init(api_obj):
 
     api_obj.add_resource(
         CameraManager,
-        '/v1_0/camera/',
+        '/v1_0/camera/<string:id>',
         endpoint='Camera'
+    )
+
+    api_obj.add_resource(
+        CameraManager,
+        '/v1_0/camera/',
+        endpoint='CameraList'
     )
 
     api_obj.add_resource(
@@ -45,7 +51,7 @@ def url_init(api_obj):
 
     api_obj.add_resource(
         StereoManager,
-        '/v1_0/stereo/',
+        '/v1_0/stereo/<int:id>',
         endpoint='Stereo'
     )
 

@@ -1,6 +1,7 @@
 from HttpServer.Translator.BaseTranslator import BaseTranslator
 import json
-
+import abc
+from Configure.HttpSetting import *
 
 class JsonTranslator(BaseTranslator):
 
@@ -34,4 +35,20 @@ class JsonTranslator(BaseTranslator):
         elif isinstance(args, tuple):
             str_args = map(JsonTranslator.convert, args)
         return json.loads(str_args)
+
+
+        # # get specify camera by id
+        # if CAMERA_ID_N in self.req_dict:
+        #     req_cam = Camera.get_by_id(self.req_dict[CAMERA_ID_N])
+        #     if req_cam is None:
+        #         return self.make_http_response(False, 'Camera id not exist！')
+        #     req_cam_dict = Camera.to_dict(req_cam)
+        #     return self.make_http_response(True, 'camera %s info:' % req_cam.id, msg_obj=req_cam_dict)
+        # # get camera id list
+        # else:
+        #     req_cam_list = Camera.get_all_gen_list()
+        #     if req_cam_list is None:
+        #         return self.make_http_response(False, 'Camera list is null, please add some first')
+        #     req_cam_dict_list = Camera.to_dict(req_cam_list)
+        #     return self.make_http_response(True, 'camera list', msg_obj=req_cam_dict_list)
 

@@ -155,15 +155,22 @@ class WSGIClient(object):
         )
         print ret.json()
 
-    def camera_get(self):
+    def camera_get(self, id=None):
         data = {
             # 'id': 'abc'
         }
-        ret = self.session.get(
-            self.url_dict['camera_url'],
-            headers=self.headers_dict,
-            json=data
-        )
+        if id is not None:
+            ret = self.session.get(
+                self.url_dict['camera_url'] + str(id),
+                headers=self.headers_dict,
+                json=data
+            )
+        else:
+            ret = self.session.get(
+                self.url_dict['camera_url'],
+                headers=self.headers_dict,
+                json=data
+            )
         print ret.json()
 
     def check_control(self):
@@ -646,14 +653,15 @@ if __name__ == '__main__':
     # web_client.register('ban', '123123')
 
     # 登录
-    web_client.login('ban', 123123)
+    # web_client.login('ban', 123123)
 
     # 添加相机， 重复添加报错， 每次返回数据包包含 请求结果信息
     # web_client.camera_post()
     # web_client.camera_post1()
 
     # 获取相机列表
-    # web_client.camera_get()
+    web_client.camera_get()
+    web_client.camera_get('abc')
 
     # 上传文件， 用户绑定
     # web_client.files_upload(['/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/lua2.txt',
@@ -664,7 +672,7 @@ if __name__ == '__main__':
     #                          ])
 
     # 添加双目标定结果表信息
-    web_client.stereo_set('abc', 'def', 'lua2.txt', 'e.txt')
+    # web_client.stereo_set('abc', 'def', 'lua2.txt', 'e.txt')
     #
     # # 获取双目标定结果表信息
     # web_client.stereo_get()
