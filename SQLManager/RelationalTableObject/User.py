@@ -59,8 +59,6 @@ class User(sql_object.Model, BaseObject):
     def to_dict(self, obj):
         pass
 
-    def get_upload_path(self):
-        return UPLOAD_FOLDER + str(self.id) + '/'
 
     @classmethod
     def to_obj(cls, package):

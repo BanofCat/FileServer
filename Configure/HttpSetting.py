@@ -43,6 +43,8 @@ SINGLE_ID_N = 'id'
 
 REQ_ID_N = 'id'
 
+LOCATION_ID_N = 'location_id'
+
 
 
 # file manager

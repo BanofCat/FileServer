@@ -13,20 +13,6 @@ class Camera(sql_object.Model, BaseObject):
 
     producer = sql_object.Column(sql_object.String(32), nullable=True, unique=False)
 
-    # @classmethod
-    # def is_exist(cls, db_obj):
-    #     ret = Camera.query.filter(Camera.id == db_obj.id).first()
-    #     if ret is None:
-    #         return False
-    #     return True
-    #
-    # @classmethod
-    # def is_exist(cls, id=None):
-    #     if id is not None:
-    #         ret = Camera.query.filter(Camera.id == id).first()
-    #         if ret is not None:
-    #             return True
-    #     return False
 
     def __init__(self, id, use_type, producer):
         BaseObject.__init__(self)
@@ -40,3 +26,29 @@ class Camera(sql_object.Model, BaseObject):
     @classmethod
     def to_obj(cls, arg_dict):
         return Camera(arg_dict['id'], arg_dict['use_type'], arg_dict['producer'])
+
+    @classmethod
+    def to_obj(cls, args_dict):
+        for k in Camera.__table__.columns:
+            if k.name not in args_dict:
+                args_dict[k.name] = None
+
+        new_cam = Camera(args_dict[Camera.id.name],
+                         args_dict[Camera.use_type.name],
+                         args_dict[Camera.producer.name]
+                         )
+        return new_cam
+
+    @classmethod
+    def update_obj(cls, args_dict):
+        if Camera.id.name not in args_dict:
+            return None
+        cam = Camera.get_by_id(args_dict[Camera.id.name])
+        if cam is not None:
+            for k in Camera.__table__.columns:
+                if k.name in args_dict:
+                    cam.k = args_dict[k.name]
+        return cam
+
+
+

@@ -1,6 +1,10 @@
 
 class SQLException(Exception):
-    pass
+    def __init__(self, msg=None):
+        self.msg = msg
+
+    def what(self):
+        return self.msg
 
 
 class DBException(SQLException):
@@ -8,12 +12,7 @@ class DBException(SQLException):
 
 
 class ObjectNotExist(SQLException):
-
-    def __init__(self, msg=None):
-        self.msg = msg
-
-    def what(self):
-        return self.msg
+    pass
 
 
 class InputInvalid(Exception):

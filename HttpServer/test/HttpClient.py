@@ -89,7 +89,7 @@ class WSGIClient(object):
             headers=self.headers_dict,
             json=data
         )
-        print ret.json()
+        print(ret.json())
 
     def stereo_set(self, l_id, r_id, l_cam_file=None, r_cam_file=None):
         obj_data = {
@@ -106,7 +106,7 @@ class WSGIClient(object):
             headers=self.headers_dict,
             json=data
         )
-        print ret.json()
+        print(ret.json())
 
     def stereo_get(self):
         data = {
@@ -117,7 +117,7 @@ class WSGIClient(object):
             headers=self.headers_dict,
             json=data
         )
-        print ret.json()
+        print(ret.json())
 
     def camera_post(self):
         obj_data = {
@@ -135,7 +135,7 @@ class WSGIClient(object):
             headers=self.headers_dict,
             json=data
         )
-        print ret.json()
+        print(ret.json())
 
     def camera_post1(self):
         obj_data = {
@@ -153,7 +153,7 @@ class WSGIClient(object):
             headers=self.headers_dict,
             json=data
         )
-        print ret.json()
+        print(ret.json())
 
     def camera_get(self, id=None):
         data = {
@@ -171,7 +171,7 @@ class WSGIClient(object):
                 headers=self.headers_dict,
                 json=data
             )
-        print ret.json()
+        print(ret.json())
 
     def check_control(self):
         header = {
@@ -224,15 +224,15 @@ class WSGIClient(object):
         self.ws.emit('leave', "on")
 
     def _get_token(self, data):
-        print '>>> %s' % data
+        print('>>> %s' % data)
         if isinstance(data, str):
-            print 'Args invalid'
+            print('Args invalid')
             return None
         if 'data' in data and 'token' in data['data']:
-            print "===%s" % data['data']['token']
+            print("===%s" % data['data']['token'])
             return data['data']['token']
         else:
-            print 'get token failed'
+            print('get token failed')
         return None
 
     def get_point(self, id):
@@ -316,10 +316,10 @@ class WSGIClient(object):
     #         return None
 
     def files_upload(self, file_list):
-        print 'files_upload: %s' % str(file_list)
+        print('files_upload: %s' % str(file_list))
         files_dict = {}
         for item in file_list:
-            print 'item: %s' % str(item)
+            print('item: %s' % str(item))
             if not os.path.isfile(item):
                 return False
             files_dict[os.path.basename(item)] = open(item, 'rb')
@@ -327,7 +327,7 @@ class WSGIClient(object):
         # files_dict = {
         #     'lua1.lua': file_open
         # }
-        print '---', files_dict
+        print('---', files_dict)
         # print '---', files_dict['lua1.lua'].read()
 
         header = {
@@ -342,7 +342,7 @@ class WSGIClient(object):
         print('files_upload: %s' % ret.json())
 
     def file_download(self, filename, file_dir):
-        print 'files_download: %s' % str(filename)
+        print('files_download: %s' % str(filename))
         if not os.path.exists(file_dir):
             print('Download directory is not exist')
             return None
@@ -363,7 +363,7 @@ class WSGIClient(object):
         self.save_file_from_http_response(download_file_stream, file_dir, filename)
 
     def file_download_all(self, file_dir):
-        print 'file_download_all: %s' % str(file_dir)
+        print('file_download_all: %s' % str(file_dir))
         if not os.path.exists(file_dir):
             print('Download directory is not exist')
             return None

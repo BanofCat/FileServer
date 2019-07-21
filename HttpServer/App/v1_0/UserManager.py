@@ -2,7 +2,6 @@ from HttpServer.Translator.JsonTranslator import JsonTranslator
 from flask_restful import reqparse
 from flask import make_response, render_template
 from SQLManager.RelationalTableObject.User import User
-from HttpServer.App.v1_0.AuthManager import AuthManager
 from flask import session
 from Configure.HttpSetting import *
 from Exception.SqlException import ObjectNotExist

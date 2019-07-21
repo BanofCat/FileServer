@@ -1,6 +1,5 @@
 from HttpServer.Translator.JsonTranslator import JsonTranslator
 from flask_restful import reqparse
-from SQLManager.RelationalTableObject.User import User
 from flask import send_from_directory
 from flask import session
 from Exception.SqlException import ObjectNotExist

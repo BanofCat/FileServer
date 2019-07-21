@@ -16,22 +16,24 @@ class StereoManager(JsonTranslator):
         super(StereoManager, self).__init__()
 
     # get all StereoCalibration list or single StereoCalibration info by id
-    def get(self):
+    def get(self, id):
         # get specify StereoCalibration by id
-        if StereoCalibration.__table__.columns.id.name in self.req_dict:
-            req_obj = StereoCalibration.get_by_id(self.req_dict[STEREO_ID_N])
-            if req_obj is None:
-                return self.make_http_response(False, 'StereoCalibration id not exist！')
-            req_rob_dict = StereoManager.to_dict(req_obj)
-            return self.make_http_response(True, 'StereoCalibration %s info:' % req_obj.id, msg_obj=req_rob_dict)
-        # get StereoCalibration id list
-        else:
-            req_obj_list = StereoCalibration.get_all_gen_list()
-
-            if req_obj_list is None:
-                return self.make_http_response(False, 'StereoCalibration list is null, please add some first')
-            req_rob_dict_list = StereoCalibration.to_dict(req_obj_list)
-            return self.make_http_response(True, 'StereoCalibration list', msg_obj=req_rob_dict_list)
+        self.logger.info('%s: get' % __name__)
+        return self.get_base(StereoCalibration, id)
+        # if StereoCalibration.__table__.columns.id.name in self.req_dict:
+        #     req_obj = StereoCalibration.get_by_id(self.req_dict[STEREO_ID_N])
+        #     if req_obj is None:
+        #         return self.make_http_response(False, 'StereoCalibration id not exist！')
+        #     req_rob_dict = StereoManager.to_dict(req_obj)
+        #     return self.make_http_response(True, 'StereoCalibration %s info:' % req_obj.id, msg_obj=req_rob_dict)
+        # # get StereoCalibration id list
+        # else:
+        #     req_obj_list = StereoCalibration.get_all_gen_list()
+        #
+        #     if req_obj_list is None:
+        #         return self.make_http_response(False, 'StereoCalibration list is null, please add some first')
+        #     req_rob_dict_list = StereoCalibration.to_dict(req_obj_list)
+        #     return self.make_http_response(True, 'StereoCalibration list', msg_obj=req_rob_dict_list)
 
     # add new StereoCalibration or delete one by id
     @AuthManager.user_auth
@@ -41,7 +43,7 @@ class StereoManager(JsonTranslator):
             if GENERA_ID_N not in self.req_dict:
                 return self.make_http_response(False, 'you should set generate data table before you add this')
 
-            req_obj = StereoCalibration.to_obj(self.req_dict[OBJECT_DATA_N], req_user)
+            req_obj = StereoCalibration.to_obj(self.req_dict[OBJECT_DATA_N])
             if StereoCalibration.is_exist(req_obj):
                 return self.make_http_response(False, 'StereoCalibration is exist, can not add any more!')
             StereoCalibration.add(req_obj)
@@ -49,3 +51,14 @@ class StereoManager(JsonTranslator):
             self.logger.error(e.what())
             return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'Add StereoCalibration Success!')
+
+    def put(self):
+        self.logger.info("%s: put" % __name__)
+        req_cam = StereoCalibration.update_obj(self.req_dict[OBJECT_DATA_N])
+        if req_cam is None:
+            return self.make_http_response(False, 'camera update data invalid')
+        StereoCalibration.add(req_cam)
+        return self.make_http_response(True, 'update success')
+
+    def delete(self):
+        pass

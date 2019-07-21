@@ -2,7 +2,12 @@
 from SQLManager import sql_object
 from SQLManager.RelationalTableObject.BaseObject import BaseObject
 from SQLManager.RelationalTableObject.GenerateData import GenerateData
-from Exception import ObjectNotExist
+from SQLManager.RelationalTableObject.DH_Optimised import DH_Optimised
+from SQLManager.RelationalTableObject.InverseTest import InverseTest
+from SQLManager.RelationalTableObject.SingleCalibration import SingleCalibration
+from SQLManager.RelationalTableObject.StereoCalibration import StereoCalibration
+from Configure.HttpSetting import *
+from Exception.SqlException import ObjectNotExist
 
 
 class LocationList(sql_object.Model, BaseObject):
@@ -34,3 +39,6 @@ class LocationList(sql_object.Model, BaseObject):
         self.stereo_ca_id = stereo_ca_id
         self.dh_id = dh_id
         self.inv_id = inv_id
+
+    def get_upload_path(self):
+        return UPLOAD_FOLDER + str(self.id) + '/'

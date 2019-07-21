@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 from SQLManager import sql_object
 from SQLManager.RelationalTableObject.BaseObject import BaseObject
-from Exception import ObjectNotExist
+from Exception.SqlException import ObjectNotExist
 import enum
 
 

@@ -3,7 +3,7 @@ from SQLManager import sql_object
 from SQLManager.RelationalTableObject.BaseObject import BaseObject
 from SQLManager.RelationalTableObject.Robot import Robot
 from SQLManager.RelationalTableObject.User import User
-from Exception import ObjectNotExist
+from Exception.SqlException import ObjectNotExist
 
 
 class GenerateData(sql_object.Model, BaseObject):
