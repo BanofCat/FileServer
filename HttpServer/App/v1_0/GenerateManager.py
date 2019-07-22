@@ -1,6 +1,9 @@
 from HttpServer.Translator.JsonTranslator import JsonTranslator
 from flask_restful import reqparse
 from SQLManager.RelationalTableObject.GenerateData import GenerateData
+from Exception.SqlException import ObjectNotExist
+from Configure.HttpSetting import *
+from SQLManager.RelationalTableObject.LocationList import LocationList
 
 
 class GenerateManager(JsonTranslator):
@@ -12,32 +15,41 @@ class GenerateManager(JsonTranslator):
 
     # get all GenerateData list or single GenerateData info by id
     def get(self):
-        # get specify camera by id
-        if CAMERA_ID_N in self.req_dict:
-            req_cam = GenerateData.get_by_id(self.req_dict[CAMERA_ID_N])
-            if req_cam is None:
-                return self.make_http_response(False, 'GenerateData id not exist！')
-            req_cam_dict = self.obj2package(GenerateData, req_cam)
-            return self.make_http_response(True, 'GenerateData %s info:' % req_cam.id, msg_obj=req_cam_dict)
-        # get GenerateData id list
-        else:
-            req_cam_list = GenerateData.get_all_gen_list()
-
-            if req_cam_list is None:
-                return self.make_http_response(False, 'GenerateData list is null, please add some first')
-            req_cam_dict_list = self.obj2package_list(GenerateData, req_cam_list)
-            return self.make_http_response(True, 'GenerateData list', msg_obj=req_cam_dict_list)
+        # get specify GenerateData by id
+        self.logger.info('%s: get' % __name__)
+        return self.get_base(GenerateData, id)
 
     # add new GenerateData or delete one by id
     def post(self):
-
         self.logger.info("%s: post" % __name__)
-        args = self.req_data
-        req_cam = self.package2obj(GenerateData, args)
-        if GenerateData.is_exist(req_cam):
+        req_gen = GenerateData.to_obj(self.req_dict[OBJECT_DATA_N])
+        if GenerateData.is_exist(req_gen):
             return self.make_http_response(False, 'GenerateData is exist, can not add any more!')
         try:
-            GenerateData.add(req_cam)
+            GenerateData.add(req_gen)
         except ObjectNotExist as e:
             return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'Add GenerateData Success!')
+
+    def put(self, loc_id):
+        self.logger.info('%s: put' % __name__)
+        location_obj = LocationList.get_by_id(loc_id)
+        print(LocationList.to_dict(location_obj))
+        req_gen = GenerateData.update_obj(self.req_dict[OBJECT_DATA_N], location_obj)
+        if req_gen is None:
+            return self.make_http_response(False, 'camera update data invalid')
+        GenerateData.add(req_gen)
+        return self.make_http_response(True, 'update success')
+
+    def delete(self, id):
+        self.logger.info('%s: delete' % __name__)
+        ste_obj = GenerateData.get_by_id(id)
+        if ste_obj is None:
+            return self.make_http_response(False, 'delete stereo data not exist')
+        obj_list = LocationList.query().filter(LocationList.g_id == id).all()
+
+        # todo: LocationList.g_id can not be None
+        # remove all Location item with generate data id link
+        for obj in obj_list:
+            LocationList.delete(obj)
+        return self.delete_base(GenerateData, id)

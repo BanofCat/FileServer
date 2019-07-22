@@ -35,9 +35,6 @@ class User(sql_object.Model, BaseObject):
         self.password = generate_password_hash(password)
         return True
 
-    def is_own_file(self, filename):
-        return os.path.exists(UPLOAD_FOLDER + str(self.id) + '/' + filename)
-
     @classmethod
     def is_exist(cls, db_obj):
         id_ret = cls.query.filter(cls.id == db_obj.id).first()

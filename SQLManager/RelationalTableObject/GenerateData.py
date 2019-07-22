@@ -40,9 +40,34 @@ class GenerateData(sql_object.Model, BaseObject):
 
     # def _init_location(self):
     #     SingleCalibration.query.filter(self.id == SingleCalibration.g_id)
+    @classmethod
+    def to_obj(cls, args_dict):
+        for k in GenerateData.__table__.columns:
+            if k.name not in args_dict:
+                args_dict[k.name] = None
 
+        new_cam = GenerateData( args_dict[GenerateData.robot_id.name],
+                                args_dict[GenerateData.user_id.name],
+                                args_dict[GenerateData.pic_date.name],
+                                args_dict[GenerateData.dh_date.name],
+                                args_dict[GenerateData.fb_date.name]
+                                )
+        return new_cam
 
+    @classmethod
+    def update_obj(cls, args_dict, location_obj):
+        if location_obj is None:
+            raise ObjectNotExist('Location id is wrong')
+        if GenerateData.id.name not in args_dict:
+            raise ObjectNotExist('GenerateData id is wrong')
+        gen = GenerateData.get_by_id(args_dict[GenerateData.id.name])
+        if gen is None:
+            raise ObjectNotExist('GenerateData id is wrong')
 
-
+        # add origin data which are not in req data
+        for k in GenerateData.__table__.columns:
+            if k.name in args_dict:
+                setattr(gen, k.name, args_dict[k.name])
+        return ste
 
 

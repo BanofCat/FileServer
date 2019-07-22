@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from flask_restful import Api
 from flask import Flask
 from SQLManager import sql_object
@@ -12,6 +14,9 @@ def url_init(api_obj):
     from HttpServer.App.v1_0.CameraManager import CameraManager
     from HttpServer.App.v1_0.FileManager import FileUpload, FileDownload
     from HttpServer.App.v1_0.StereoManager import StereoManager
+    from HttpServer.App.v1_0.RobotManager import RobotManager
+    from HttpServer.App.v1_0.GenerateManager import GenerateManager
+    from HttpServer.App.v1_0.LocationManager import LocationManager
 
     api_obj.add_resource(
         Registrar,
@@ -29,6 +34,30 @@ def url_init(api_obj):
         CameraManager,
         '/v1_0/camera/<string:id>',
         endpoint='Camera'
+    )
+
+    api_obj.add_resource(
+        GenerateManager,
+        '/v1_0/generate/',
+        endpoint='Generate'
+    )
+
+    api_obj.add_resource(
+        LocationManager,
+        '/v1_0/location/',
+        endpoint='Location'
+    )
+
+    api_obj.add_resource(
+        RobotManager,
+        '/v1_0/robot/',
+        endpoint='RobotList'
+    )
+
+    api_obj.add_resource(
+        RobotManager,
+        '/v1_0/robot/<string:id>',
+        endpoint='Robot'
     )
 
     api_obj.add_resource(
@@ -51,9 +80,14 @@ def url_init(api_obj):
 
     api_obj.add_resource(
         StereoManager,
-        '/v1_0/stereo/<int:id>',
+        '/v1_0/stereo/<int:loc_id>',
         endpoint='Stereo'
     )
+    # api_obj.add_resource(
+    #     StereoManager,
+    #     '/v1_0/stereo/<string:loc_id>',
+    #     endpoint='StereoStr'
+    # )
 
 
 
@@ -92,5 +126,5 @@ if __name__ == '__main__':
     web_app.run(
         host=HTTP_HOST,
         port=HTTP_PORT,
-        debug=False
+        debug=True
     )

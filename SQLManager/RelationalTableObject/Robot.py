@@ -21,3 +21,15 @@ class Robot(sql_object.Model, BaseObject):
         self.id = id
         self.joints = joints
         self.type = type
+
+    @classmethod
+    def to_obj(cls, args_dict):
+        for k in Robot.__table__.columns:
+            if k.name not in args_dict:
+                args_dict[k.name] = None
+
+        new_rob = Robot(args_dict[Robot.id.name],
+                        args_dict[Robot.joints.name],
+                        args_dict[Robot.type.name]
+                        )
+        return new_rob

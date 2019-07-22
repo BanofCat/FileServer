@@ -37,16 +37,13 @@ class CameraManager(JsonTranslator):
         req_cam = Camera.update_obj(self.req_dict[OBJECT_DATA_N])
         if req_cam is None:
             return self.make_http_response(False, 'camera update data invalid')
-        Camera.add(req_cam)
+        print(req_cam.use_type)
+        Camera.add(req_cam, True)
         return self.make_http_response(True, 'update success')
 
     # delete camera item
     def delete(self, id):
         self.logger.info('%s: delete' % __name__)
-        try:
-            Camera.delete(id)
-        except DBException as e:
-            return self.make_http_response(False, 'delete id is not exist')
-        return self.make_http_response(True, 'delete success')
+        return self.delete_base(CameraManager, id)
 
 

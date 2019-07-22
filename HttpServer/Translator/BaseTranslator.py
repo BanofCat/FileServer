@@ -4,6 +4,7 @@ import logging
 import logging.config
 from Configure.HttpSetting import *
 from Exception.SqlException import ObjectNotExist
+from Exception.SqlException import DBException
 
 
 class BaseTranslator(Resource):
@@ -50,7 +51,19 @@ class BaseTranslator(Resource):
             req_rob_dict_list = obj_class.to_dict(req_obj_list)
             return self.make_http_response(True, '%s list' % obj_class.__name__, msg_obj=req_rob_dict_list)
 
-
+    # delete item
+    @abc.abstractmethod
+    def delete_base(self, obj_class, id):
+        try:
+            obj = obj_class.get_by_id(id)
+            if obj is not None:
+                if not obj_class.delete(obj, True):
+                    return self.make_http_response(False, 'delete failed, maybe delete item is a dependency')
+            else:
+                raise DBException
+        except DBException as e:
+            return self.make_http_response(False, 'delete id is not exist')
+        return self.make_http_response(True, 'delete success')
     # @abc.abstractmethod
     # def post(self, obj_class, id=None, obj_data=None):
     #     # add new item

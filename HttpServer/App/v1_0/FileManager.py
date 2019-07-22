@@ -5,6 +5,7 @@ from flask import session
 from Exception.SqlException import ObjectNotExist
 from Configure.HttpSetting import *
 from HttpServer.App.v1_0.AuthManager import AuthManager
+from SQLManager.RelationalTableObject.LocationList import LocationList
 
 
 class FileUpload(JsonTranslator):
@@ -14,29 +15,31 @@ class FileUpload(JsonTranslator):
         self.req_dict = self.to_dict(self.req_data)
         super(FileUpload, self).__init__()
 
-    @AuthManager.user_auth
-    def post(self, req_user):
+    # @AuthManager.user_auth
+    def post(self, location_id):
         self.logger.info("%s : post" % __name__)
         if 'is_cover' in self.req_dict and self.req_dict['is_cover'] is True:
             is_cover = True
         else:
             is_cover = False
-        ret_obj = self._save_files(reqparse.request.files.to_dict(), req_user, is_cover)
+        loc_obj = LocationList.get_by_id(location_id)
+        if loc_obj is None:
+            return self.make_http_response(False, 'Location id is wrong')
+        ret_obj = self._save_files(reqparse.request.files.to_dict(), loc_obj, is_cover)
         return self.make_http_response(True, 'upload result', msg_obj=ret_obj)
 
-    def _save_files(self, files_dict, user, is_overwrite):
+    def _save_files(self, files_dict, loc_obj, is_overwrite):
         if not isinstance(files_dict, dict):
             raise ObjectNotExist("File dict arg is not a type of dict")
         ret_dict = {}
         for k, v in files_dict.items():
             ret_dict[k] = True
-
-            if not is_overwrite and user.is_own_file(v.filename):
+            if not is_overwrite and loc_obj.is_own_file(v.filename):
                 return self.make_http_response(False, 'file %s has been upload, maybe you want to cover it')
             if not v or not self._filename_check(v.filename):
                 ret_dict[k] = False
                 continue
-            file_path = UPLOAD_FOLDER + str(user.id)
+            file_path = UPLOAD_FOLDER + str(loc_obj.id)
             self._mkdirs(file_path)
             abs_path = file_path + '/' + v.filename
             v.save(abs_path)

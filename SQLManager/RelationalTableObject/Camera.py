@@ -13,7 +13,6 @@ class Camera(sql_object.Model, BaseObject):
 
     producer = sql_object.Column(sql_object.String(32), nullable=True, unique=False)
 
-
     def __init__(self, id, use_type, producer):
         BaseObject.__init__(self)
         self._set_data(id, use_type, producer)
@@ -22,10 +21,6 @@ class Camera(sql_object.Model, BaseObject):
         self.id = id
         self.use_type = use_type
         self.producer = producer
-
-    @classmethod
-    def to_obj(cls, arg_dict):
-        return Camera(arg_dict['id'], arg_dict['use_type'], arg_dict['producer'])
 
     @classmethod
     def to_obj(cls, args_dict):
@@ -38,17 +33,6 @@ class Camera(sql_object.Model, BaseObject):
                          args_dict[Camera.producer.name]
                          )
         return new_cam
-
-    @classmethod
-    def update_obj(cls, args_dict):
-        if Camera.id.name not in args_dict:
-            return None
-        cam = Camera.get_by_id(args_dict[Camera.id.name])
-        if cam is not None:
-            for k in Camera.__table__.columns:
-                if k.name in args_dict:
-                    cam.k = args_dict[k.name]
-        return cam
 
 
 

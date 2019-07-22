@@ -33,3 +33,17 @@ class BaseModel(Model):
     def get_all_gen_list(cls):
         return cls.query.all()
 
+    @classmethod
+    @abc.abstractmethod
+    def update_obj(cls, args_dict):
+        if cls.id.name not in args_dict:
+            print('id is none')
+            return None
+        obj = cls.get_by_id(args_dict[cls.id.name])
+        if obj is not None:
+            for k in cls.__table__.columns:
+                if k.name in args_dict:
+                    setattr(obj, k.name, args_dict[k.name])
+
+        print(cls.to_dict(obj))
+        return obj

@@ -4,7 +4,7 @@ from SQLManager.RelationalTableObject.BaseObject import BaseObject
 from SQLManager.RelationalTableObject.Camera import Camera
 from Exception.SqlException import ObjectNotExist
 from Configure.HttpSetting import *
-from SQLManager.RelationalTableObject.LocationList import LocationList
+
 
 class StereoCalibration(sql_object.Model, BaseObject):
 
@@ -41,6 +41,11 @@ class StereoCalibration(sql_object.Model, BaseObject):
         BaseObject.__init__(self)
         self._set_data(l_camera_id, r_camera_id, l_cam_matrix, r_cam_matrix, l_dist_coeffs, r_dist_coeffs,
                        rt_cam_a2_cam_b, stereo_e, stereo_f, stereo_r, pixel_err, loc_obj)
+
+    def __setattr__(self, key, value):
+        if key == self.l_camera_id.name:
+            self.__dict__[key] = self._set_cam(value)
+
 
     def _set_data(self, l_camera_id, r_camera_id, l_cam_matrix=None, r_cam_matrix=None, l_dist_coeffs=None,
                   r_dist_coeffs=None, rt_cam_a2_cam_b=None, stereo_e=None, stereo_f=None, stereo_r=None,
@@ -102,4 +107,18 @@ class StereoCalibration(sql_object.Model, BaseObject):
         return new_stereo
 
     @classmethod
-    def update_obj(cls, args_dict, ):
+    def update_obj(cls, args_dict, location_obj):
+        if location_obj is None:
+            raise ObjectNotExist('Location id is wrong')
+        if StereoCalibration.id.name not in args_dict:
+            raise ObjectNotExist('StereoCalibration id is wrong')
+        ste = StereoCalibration.get_by_id(args_dict[StereoCalibration.id.name])
+        if ste is None:
+            raise ObjectNotExist('StereoCalibration id is wrong')
+
+        # add origin data which are not in req data
+        for k in StereoCalibration.__table__.columns:
+            if k.name in args_dict:
+                setattr(ste, k.name, args_dict[k.name])
+        return ste
+

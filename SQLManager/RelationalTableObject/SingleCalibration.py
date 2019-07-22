@@ -101,3 +101,19 @@ class SingleCalibration(sql_object.Model, BaseObject):
                                        req_user
                                        )
         return new_stereo
+
+    @classmethod
+    def update_obj(cls, args_dict, location_obj):
+        if location_obj is None:
+            raise ObjectNotExist('Location id is wrong')
+        if SingleCalibration.id.name not in args_dict:
+            raise ObjectNotExist('StereoCalibration id is wrong')
+        sin = SingleCalibration.get_by_id(args_dict[SingleCalibration.id.name])
+        if sin is None:
+            raise ObjectNotExist('StereoCalibration id is wrong')
+
+        # add origin data which are not in req data
+        for k in SingleCalibration.__table__.columns:
+            if k.name in args_dict:
+                setattr(sin, k.name, args_dict[k.name])
+        return sin

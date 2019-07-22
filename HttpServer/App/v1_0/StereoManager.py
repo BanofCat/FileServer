@@ -5,6 +5,7 @@ from flask import session
 from Configure.HttpSetting import *
 from Exception.SqlException import ObjectNotExist
 from HttpServer.App.v1_0.AuthManager import AuthManager
+from SQLManager.RelationalTableObject.LocationList import LocationList
 
 
 class StereoManager(JsonTranslator):
@@ -20,24 +21,10 @@ class StereoManager(JsonTranslator):
         # get specify StereoCalibration by id
         self.logger.info('%s: get' % __name__)
         return self.get_base(StereoCalibration, id)
-        # if StereoCalibration.__table__.columns.id.name in self.req_dict:
-        #     req_obj = StereoCalibration.get_by_id(self.req_dict[STEREO_ID_N])
-        #     if req_obj is None:
-        #         return self.make_http_response(False, 'StereoCalibration id not exist！')
-        #     req_rob_dict = StereoManager.to_dict(req_obj)
-        #     return self.make_http_response(True, 'StereoCalibration %s info:' % req_obj.id, msg_obj=req_rob_dict)
-        # # get StereoCalibration id list
-        # else:
-        #     req_obj_list = StereoCalibration.get_all_gen_list()
-        #
-        #     if req_obj_list is None:
-        #         return self.make_http_response(False, 'StereoCalibration list is null, please add some first')
-        #     req_rob_dict_list = StereoCalibration.to_dict(req_obj_list)
-        #     return self.make_http_response(True, 'StereoCalibration list', msg_obj=req_rob_dict_list)
 
     # add new StereoCalibration or delete one by id
-    @AuthManager.user_auth
-    def post(self, req_user):
+    # @AuthManager.user_auth
+    def post(self):
         self.logger.info("%s: post" % __name__)
         try:
             if GENERA_ID_N not in self.req_dict:
@@ -52,13 +39,26 @@ class StereoManager(JsonTranslator):
             return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'Add StereoCalibration Success!')
 
-    def put(self):
+    def put(self, loc_id):
         self.logger.info("%s: put" % __name__)
-        req_cam = StereoCalibration.update_obj(self.req_dict[OBJECT_DATA_N])
-        if req_cam is None:
+        self.logger.info("id: %d" % loc_id)
+        location_obj = LocationList.get_by_id(loc_id)
+        print(LocationList.to_dict(location_obj))
+        req_ste = StereoCalibration.update_obj(self.req_dict[OBJECT_DATA_N], location_obj)
+        if req_ste is None:
             return self.make_http_response(False, 'camera update data invalid')
-        StereoCalibration.add(req_cam)
+        StereoCalibration.add(req_ste)
         return self.make_http_response(True, 'update success')
 
-    def delete(self):
-        pass
+    def delete(self, id):
+        self.logger.info('%s: delete' % __name__)
+        ste_obj = StereoCalibration.get_by_id(id)
+        if ste_obj is None:
+            return self.make_http_response(False, 'delete stereo data not exist')
+        obj_list = LocationList.query().filter(LocationList.stereo_ca_id == id).all()
+        # remove all Location item's stereo id link
+        for obj in obj_list:
+            obj.stereo_ca_id = None
+            LocationList.add(obj)
+        return self.delete_base(StereoCalibration, id)
+
