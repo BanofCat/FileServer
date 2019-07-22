@@ -3,6 +3,8 @@ from SQLManager import sql_object
 from SQLManager.RelationalTableObject.BaseObject import BaseObject
 from Exception.SqlException import ObjectNotExist
 import enum
+from Configure.HttpSetting import *
+from SQLManager.RelationalTableObject.LocationList import LocationList
 
 
 class DH_Model(enum.Enum):
@@ -56,3 +58,43 @@ class DH_Optimised(sql_object.Model, BaseObject):
         self.trc = trc
         self.a_offset_six_param = a_offset_six_param
         self.c_offset_six_param = c_offset_six_param
+
+    @classmethod
+    def to_obj(cls, args_dict):
+        if LOCATION_ID_N not in args_dict:
+            raise ObjectNotExist('Location id is wrong')
+        location_obj = LocationList.get_by_id(args_dict[LOCATION_ID_N])
+        if location_obj is None:
+            raise ObjectNotExist('Location id is wrong')
+
+        for k in DH_Optimised.__table__.columns:
+            if k.name not in args_dict:
+                args_dict[k.name] = None
+
+        new_dh = DH_Optimised( args_dict[DH_Optimised.model.name],
+                                   args_dict[DH_Optimised.angle_offset_full.name],
+                                   args_dict[DH_Optimised.joint_scale_factor.name],
+                                   args_dict[DH_Optimised.refine_pixel_err.name],
+                                   args_dict[DH_Optimised.tot.name],
+                                   args_dict[DH_Optimised.trc.name],
+                                   args_dict[DH_Optimised.a_offset_six_param.name],
+                                   args_dict[DH_Optimised.c_offset_six_param.name],
+                                   location_obj
+                                   )
+        return new_dh
+
+    @classmethod
+    def update_obj(cls, args_dict, location_obj):
+        if location_obj is None:
+            raise ObjectNotExist('Location id is wrong')
+        if DH_Optimised.id.name not in args_dict:
+            raise ObjectNotExist('DH_Optimised id is wrong')
+        dh_obj = DH_Optimised.get_by_id(args_dict[DH_Optimised.id.name])
+        if dh_obj is None:
+            raise ObjectNotExist('DH_Optimised id is wrong')
+
+        # add origin data which are not in req data
+        for k in DH_Optimised.__table__.columns:
+            if k.name in args_dict:
+                setattr(dh_obj, k.name, args_dict[k.name])
+        return dh_obj

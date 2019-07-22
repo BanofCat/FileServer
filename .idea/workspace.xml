@@ -2,26 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07634709-5e52-4254-962c-d6ed4b1a2a74" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/InverseManager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/LocationManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/CameraManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/CameraManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/FileManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/FileManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/GenerateManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/GenerateManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/RobotManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/RobotManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/SingleManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/SingleManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/StereoManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/StereoManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpServer/HttpServerRun.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/HttpServerRun.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpServer/Translator/BaseTranslator.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/Translator/BaseTranslator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseObject.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseObject.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/Camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/Camera.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/GenerateData.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/GenerateData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/LocationList.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/LocationList.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/Robot.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/Robot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/SingleCalibration.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/SingleCalibration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/StereoCalibration.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/StereoCalibration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/User.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/User.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/DH_OptimisedManger.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/DH_OptimisedManger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/InverseManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/InverseManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/DH_Optimised.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/DH_Optimised.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/InverseTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/InverseTest.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,11 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/StereoCalibration.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="66" selection-start-line="66" selection-end-line="122" selection-end-column="18" />
-              <folding>
-                <element signature="e#23#56#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="482">
+              <caret line="86" column="56" lean-forward="true" selection-start-line="86" selection-start-column="56" selection-end-line="86" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -46,8 +27,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/StereoManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+            <state relative-caret-position="510">
+              <caret line="18" selection-start-line="18" selection-end-line="62" selection-end-column="54" />
+              <folding>
+                <element signature="e#0#63#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -55,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/DH_Optimised.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-91">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="423">
+              <caret line="57" column="22" lean-forward="true" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
               <folding>
                 <element signature="e#23#56#0" expanded="true" />
               </folding>
@@ -67,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/SingleManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-43">
-              <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+            <state relative-caret-position="191">
+              <caret line="20" column="45" lean-forward="true" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
               </folding>
@@ -76,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/SingleCalibration.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="103" selection-start-line="103" selection-end-line="103" />
+            <state relative-caret-position="655">
+              <caret line="99" column="41" lean-forward="true" selection-start-line="99" selection-start-column="41" selection-end-line="99" selection-end-column="41" />
               <folding>
                 <element signature="e#23#56#0" expanded="true" />
               </folding>
@@ -89,10 +73,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/GenerateManager.py">
+        <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/DH_OptimisedManger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="755">
-              <caret line="53" column="36" lean-forward="true" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
+            <state relative-caret-position="1235">
+              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
               </folding>
@@ -101,10 +85,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/InverseManager.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="307">
+              <caret line="13" column="45" lean-forward="true" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#63#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/InverseTest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="377">
+              <caret line="40" column="34" lean-forward="true" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+              <folding>
+                <element signature="e#23#56#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/GenerateData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="791">
-              <caret line="70" column="18" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
+            <state relative-caret-position="1276">
+              <caret line="73" selection-start-line="73" selection-end-line="73" />
               <folding>
                 <element signature="e#23#56#0" expanded="true" />
               </folding>
@@ -115,8 +123,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HttpServer/HttpServerRun.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-900">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="696">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
@@ -133,8 +141,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>req_rob</find>
-      <find>create_app</find>
       <find>test_user</find>
       <find>formatter_simpleFormatter</find>
       <find>obj_logger</find>
@@ -161,11 +167,12 @@
       <find>req_user</find>
       <find>camera</find>
       <find>req_cam</find>
-      <find>StereoCalibration</find>
       <find>ste</find>
+      <find>new_stereo</find>
+      <find>StereoCalibration</find>
+      <find>DH_Optimised</find>
     </findStrings>
     <replaceStrings>
-      <replace>InverseTest</replace>
       <replace>StereoCalibration</replace>
       <replace>req_obj</replace>
       <replace>self.logger.info</replace>
@@ -173,7 +180,6 @@
       <replace>_set_uri</replace>
       <replace>SINGLE_ID_N</replace>
       <replace>DH_OptimisedManager</replace>
-      <replace>DH_Optimised</replace>
       <replace>print(ret.json())</replace>
       <replace>LocationManager</replace>
       <replace>LocationList</replace>
@@ -189,6 +195,10 @@
       <replace>req_gen</replace>
       <replace>SingleCalibration</replace>
       <replace>sin</replace>
+      <replace>dh_obj</replace>
+      <replace>new_dh</replace>
+      <replace>DH_Optimised</replace>
+      <replace>InverseTest</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -206,7 +216,6 @@
         <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/user.py" />
         <option value="$PROJECT_DIR$/SQLManager/__init__.py" />
         <option value="$PROJECT_DIR$/SQLManager/Exception/SqlException.py" />
-        <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/InverseTest.py" />
         <option value="$PROJECT_DIR$/SQLManager/test.py" />
         <option value="$PROJECT_DIR$/HttpServer/Main.py" />
         <option value="$PROJECT_DIR$/../.pyenv/versions/env364/lib/python3.6/site-packages/flask_restful/reqparse.py" />
@@ -221,10 +230,8 @@
         <option value="$PROJECT_DIR$/Configure/logging.conf" />
         <option value="$PROJECT_DIR$/Configure/DB_Setting.py" />
         <option value="$PROJECT_DIR$/HttpServer/App/v1_0/AuthManager.py" />
-        <option value="$PROJECT_DIR$/HttpServer/App/v1_0/DH_OptimisedManger.py" />
         <option value="$PROJECT_DIR$/Exception/ErrorCode.py" />
         <option value="$PROJECT_DIR$/HttpServer/Translator/JsonTranslator.py" />
-        <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/DH_Optimised.py" />
         <option value="$PROJECT_DIR$/HttpServer/test/HttpClient.py" />
         <option value="$PROJECT_DIR$/Exception/SqlException.py" />
         <option value="$PROJECT_DIR$/HttpServer/App/v1_0/UserManager.py" />
@@ -239,7 +246,6 @@
         <option value="$PROJECT_DIR$/HttpServer/Translator/BaseTranslator.py" />
         <option value="$PROJECT_DIR$/HttpServer/App/v1_0/RobotManager.py" />
         <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/Robot.py" />
-        <option value="$PROJECT_DIR$/HttpServer/App/v1_0/InverseManager.py" />
         <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseObject.py" />
         <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseModel.py" />
         <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/StereoCalibration.py" />
@@ -248,6 +254,10 @@
         <option value="$PROJECT_DIR$/HttpServer/App/v1_0/SingleManager.py" />
         <option value="$PROJECT_DIR$/HttpServer/App/v1_0/GenerateManager.py" />
         <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/SingleCalibration.py" />
+        <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/DH_Optimised.py" />
+        <option value="$PROJECT_DIR$/HttpServer/App/v1_0/DH_OptimisedManger.py" />
+        <option value="$PROJECT_DIR$/HttpServer/App/v1_0/InverseManager.py" />
+        <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/InverseTest.py" />
       </list>
     </option>
   </component>
@@ -491,10 +501,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1855" height="1056" extended-state="6" />
+    <frame x="0" y="-16" width="2736" height="1766" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20796943" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2076523" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -550,7 +560,6 @@
     <entry file="file://$PROJECT_DIR$/HttpServer/Upload/15/lua2.txt" />
     <entry file="file://$PROJECT_DIR$/HttpServer/Upload/15/e.txt" />
     <entry file="file://$PROJECT_DIR$/HttpServer/Upload/15/d.txt" />
-    <entry file="file://$PROJECT_DIR$/../.PyCharmCE2019.1/system/python_stubs/-171336109/builtins.py" />
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -623,13 +632,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-171336109/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="511" column="4" selection-start-line="511" selection-start-column="4" selection-end-line="511" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../.PyCharmCE2019.1/system/python_stubs/-171336109/builtins.py" />
     <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/FileManager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -647,14 +650,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.pyenv/versions/env364/lib/python3.6/site-packages/flask/app.py">
+    <entry file="file://$PROJECT_DIR$/../.pyenv/versions/env364/lib/python3.6/site-packages/flask/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-937">
           <caret line="843" column="45" selection-start-line="843" selection-start-column="40" selection-end-line="843" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.pyenv/versions/3.6.4/lib/python3.6/subprocess.py">
+    <entry file="file://$PROJECT_DIR$/../.pyenv/versions/3.6.4/lib/python3.6/subprocess.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/AuthManager.py">
@@ -663,16 +666,6 @@
           <caret line="21" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/DH_OptimisedManger.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="37" column="29" lean-forward="true" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -687,7 +680,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.pyenv/versions/3.6.4/envs/env364/lib/python3.6/site-packages/flask_restful/__init__.py">
+    <entry file="file://$PROJECT_DIR$/../.pyenv/versions/3.6.4/envs/env364/lib/python3.6/site-packages/flask_restful/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="572" selection-start-line="572" selection-end-line="572" />
@@ -723,9 +716,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/InverseManager.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/Camera.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -788,74 +778,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServer/HttpServerRun.py">
+    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/GenerateManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-900">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="841">
+          <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/GenerateData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="791">
-          <caret line="70" column="18" selection-start-line="70" selection-start-column="18" selection-end-line="70" selection-end-column="18" />
+        <state relative-caret-position="1276">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
           <folding>
             <element signature="e#23#56#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/DH_Optimised.py">
+    <entry file="file://$PROJECT_DIR$/HttpServer/HttpServerRun.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-91">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        <state relative-caret-position="696">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/SingleCalibration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="655">
+          <caret line="99" column="41" lean-forward="true" selection-start-line="99" selection-start-column="41" selection-end-line="99" selection-end-column="41" />
           <folding>
             <element signature="e#23#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/StereoManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="39" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/SingleManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-43">
-          <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/StereoCalibration.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="66" selection-start-line="66" selection-end-line="122" selection-end-column="18" />
-          <folding>
-            <element signature="e#23#56#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="482">
+          <caret line="86" column="56" lean-forward="true" selection-start-line="86" selection-start-column="56" selection-end-line="86" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/GenerateManager.py">
+    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/StereoManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="755">
-          <caret line="53" column="36" lean-forward="true" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
+        <state relative-caret-position="510">
+          <caret line="18" selection-start-line="18" selection-end-line="62" selection-end-column="54" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/SingleCalibration.py">
+    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/InverseManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="103" selection-start-line="103" selection-end-line="103" />
+        <state relative-caret-position="307">
+          <caret line="13" column="45" lean-forward="true" selection-start-line="13" selection-start-column="45" selection-end-line="13" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/DH_OptimisedManger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1235">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/SingleManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="20" column="45" lean-forward="true" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/DH_Optimised.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="57" column="22" lean-forward="true" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
+          <folding>
+            <element signature="e#23#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/InverseTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="40" column="34" lean-forward="true" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
           <folding>
             <element signature="e#23#56#0" expanded="true" />
           </folding>
