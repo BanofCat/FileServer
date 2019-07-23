@@ -3,17 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="07634709-5e52-4254-962c-d6ed4b1a2a74" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/CameraManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/CameraManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/GenerateManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/GenerateManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/LocationManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/LocationManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpServer/App/v1_0/RobotManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/App/v1_0/RobotManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpServer/HttpServerRun.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/HttpServerRun.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HttpServer/Translator/BaseTranslator.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/Translator/BaseTranslator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseObject.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseObject.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/DH_Optimised.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/DH_Optimised.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/GenerateData.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/GenerateData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/InverseTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/InverseTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQLManager/RelationalTableObject/LocationList.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQLManager/RelationalTableObject/LocationList.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HttpServer/test/HttpClient.py" beforeDir="false" afterPath="$PROJECT_DIR$/HttpServer/test/HttpClient.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +16,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HttpServer/HttpServerRun.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="695">
+            <state relative-caret-position="1980">
               <caret line="118" column="27" selection-start-line="118" selection-start-column="27" selection-end-line="118" selection-end-column="27" />
               <folding>
                 <element signature="e#23#52#0" expanded="true" />
@@ -38,7 +28,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HttpServer/Translator/JsonTranslator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
+            <state relative-caret-position="306">
               <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
@@ -47,13 +37,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/LocationManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="281">
+              <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/HttpServer/test/HttpClient.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="353">
+              <caret line="624" column="11" lean-forward="true" selection-start-line="624" selection-start-column="11" selection-end-line="624" selection-end-column="11" />
+              <folding>
+                <element signature="e#24#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -62,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/LocationList.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="641">
-              <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
+            <state relative-caret-position="1782">
+              <caret line="107" selection-start-line="107" selection-end-line="107" />
               <folding>
                 <element signature="e#23#56#0" expanded="true" />
               </folding>
@@ -74,7 +76,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/RobotManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="713">
+            <state relative-caret-position="648">
               <caret line="40" column="59" selection-start-line="40" selection-start-column="59" selection-end-line="40" selection-end-column="59" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
@@ -86,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseObject.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="78" column="27" lean-forward="true" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
+            <state relative-caret-position="1224">
+              <caret line="78" column="27" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -98,8 +100,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/GenerateManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="36" column="42" lean-forward="true" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
+            <state relative-caret-position="558">
+              <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
               </folding>
@@ -110,7 +112,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/GenerateData.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
+            <state relative-caret-position="1044">
               <caret line="62" selection-start-line="62" selection-end-line="79" selection-end-column="18" />
               <folding>
                 <element signature="e#23#56#0" expanded="true" />
@@ -223,7 +225,6 @@
         <option value="$PROJECT_DIR$/HttpServer/App/v1_0/AuthManager.py" />
         <option value="$PROJECT_DIR$/Exception/ErrorCode.py" />
         <option value="$PROJECT_DIR$/HttpServer/Translator/JsonTranslator.py" />
-        <option value="$PROJECT_DIR$/HttpServer/test/HttpClient.py" />
         <option value="$PROJECT_DIR$/Exception/SqlException.py" />
         <option value="$PROJECT_DIR$/HttpServer/App/v1_0/UserManager.py" />
         <option value="$PROJECT_DIR$/Configure/HttpSetting.py" />
@@ -249,14 +250,15 @@
         <option value="$PROJECT_DIR$/HttpServer/App/v1_0/GenerateManager.py" />
         <option value="$PROJECT_DIR$/SQLManager/RelationalTableObject/LocationList.py" />
         <option value="$PROJECT_DIR$/HttpServer/App/v1_0/LocationManager.py" />
+        <option value="$PROJECT_DIR$/HttpServer/test/HttpClient.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="65" />
-    <option name="y" value="-6" />
-    <option name="width" value="1855" />
-    <option name="height" value="1086" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="64" />
+    <option name="y" value="-4" />
+    <option name="width" value="1857" />
+    <option name="height" value="1085" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -492,9 +494,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-6" width="1855" height="1086" extended-state="6" />
+    <frame x="64" y="-4" width="1857" height="1085" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20796943" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20796943" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -577,13 +580,6 @@
     <entry file="file://$PROJECT_DIR$/../.pyenv/versions/env364/lib/python3.6/site-packages/sqlalchemy/util/_collections.py" />
     <entry file="file://$PROJECT_DIR$/../.pyenv/versions/env364/lib/python3.6/site-packages/flask/helpers.py" />
     <entry file="file://$PROJECT_DIR$/../.pyenv/versions/env364/lib/python3.6/site-packages/flask_restful/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/HttpServer/test/HttpClient.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="661" column="12" lean-forward="true" selection-start-line="661" selection-start-column="12" selection-end-line="661" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Exception/SqlException.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
@@ -805,9 +801,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServer/HttpServerRun.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1980">
+          <caret line="118" column="27" selection-start-line="118" selection-start-column="27" selection-end-line="118" selection-end-column="27" />
+          <folding>
+            <element signature="e#23#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/HttpServer/Translator/JsonTranslator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
+        <state relative-caret-position="306">
           <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
@@ -815,10 +821,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/GenerateManager.py">
+    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/LocationList.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="36" column="42" lean-forward="true" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
+        <state relative-caret-position="1782">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
+          <folding>
+            <element signature="e#23#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/RobotManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="40" column="59" selection-start-line="40" selection-start-column="59" selection-end-line="40" selection-end-column="59" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
           </folding>
@@ -827,18 +843,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/BaseObject.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="78" column="27" lean-forward="true" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
+        <state relative-caret-position="1224">
+          <caret line="78" column="27" selection-start-line="78" selection-start-column="27" selection-end-line="78" selection-end-column="27" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/RobotManager.py">
+    <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/GenerateManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="40" column="59" selection-start-line="40" selection-start-column="59" selection-end-line="40" selection-end-column="59" />
+        <state relative-caret-position="558">
+          <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
           </folding>
@@ -847,7 +863,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/GenerateData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
+        <state relative-caret-position="1044">
           <caret line="62" selection-start-line="62" selection-end-line="79" selection-end-column="18" />
           <folding>
             <element signature="e#23#56#0" expanded="true" />
@@ -855,32 +871,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SQLManager/RelationalTableObject/LocationList.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
-          <folding>
-            <element signature="e#23#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/HttpServer/HttpServerRun.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="695">
-          <caret line="118" column="27" selection-start-line="118" selection-start-column="27" selection-end-line="118" selection-end-column="27" />
-          <folding>
-            <element signature="e#23#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/HttpServer/App/v1_0/LocationManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+        <state relative-caret-position="281">
+          <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HttpServer/test/HttpClient.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="624" column="11" lean-forward="true" selection-start-line="624" selection-start-column="11" selection-end-line="624" selection-end-column="11" />
+          <folding>
+            <element signature="e#24#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
