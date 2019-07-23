@@ -3,7 +3,7 @@ import logging.config
 from sqlalchemy.exc import SQLAlchemyError
 from SQLManager import sql_object
 import abc
-from Exception.SqlException import DBException
+from Exception.SqlException import DBException, ObjectNotExist
 import decimal
 from datetime import datetime, date, time
 from sqlalchemy.orm.dynamic import AppenderQuery
@@ -31,18 +31,14 @@ class BaseObject(object):
         if not isinstance(db_obj, sql_object.Model):
             print("add obj failed, %s is not a db model object" % db_obj)
             raise DBException
-        is_exist = cls.is_exist(db_obj)
-        if is_exist is True:
-            print("db has a same object yet, can not add once more")
-            # raise DBException
-            return None
+        # is_exist = cls.is_exist(db_obj)
+        # if is_exist is True:
+        #     print("db has a same object yet, can not add once more")
+        #     # raise DBException
+        #     return None
         sql_object.session.add(db_obj)
         if need_commit:
-            try:
-                sql_object.session.commit()
-            except SQLAlchemyError as e:
-                sql_object.session.rollback()
-                print('commit failed : %s' % (str(e)))
+            sql_object.session.commit()
 
     @classmethod
     def delete(cls, db_obj, need_commit=False):
@@ -57,22 +53,24 @@ class BaseObject(object):
 
         sql_object.session.delete(db_obj)
         if need_commit:
-            try:
-                sql_object.session.commit()
-            except SQLAlchemyError as e:
-                sql_object.session.rollback()
-                print('commit failed : %s' % (str(e)))
-                return False
+            # try:
+            sql_object.session.commit()
+            # except SQLAlchemyError as e:
+            #     sql_object.session.rollback()
+            #     print('commit failed : %s' % (str(e)))
+            #     return False
         return True
 
     @classmethod
     def commit(cls):
+        # try:
         print("in %s: commit" % __name__)
-        try:
-            sql_object.session.commit()
-        except SQLAlchemyError as e:
-            sql_object.session.rollback()
-            print('commit failed : %s' % (str(e)))
+        sql_object.session.commit()
+        # except SQLAlchemyError as e:
+        #     sql_object.session.rollback()
+        #     # print('commit failed : %s' % (str(e)))
+        #     print("in %s: commit end error" % __name__)
+            # raise ObjectNotExist(str(e))
 
     @classmethod
     def to_dict(cls, o):

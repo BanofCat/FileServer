@@ -32,10 +32,13 @@ class RobotManager(JsonTranslator):
     # update Robot data
     def put(self):
         self.logger.info("%s: put" % __name__)
-        req_cam = Robot.update_obj(self.req_dict[OBJECT_DATA_N])
-        if req_cam is None:
-            return self.make_http_response(False, 'Robot update data invalid')
-        Robot.add(req_cam)
+        try:
+            req_cam = Robot.update_obj(self.req_dict[OBJECT_DATA_N])
+            if req_cam is None:
+                return self.make_http_response(False, 'Robot update data invalid')
+            Robot.add(req_cam)
+        except ObjectNotExist as e:
+            return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'update success')
 
     # delete robot item

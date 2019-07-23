@@ -34,11 +34,14 @@ class LocationManager(JsonTranslator):
     # update LocationList data
     def put(self):
         self.logger.info("%s: put" % __name__)
-        req_loc = LocationList.update_obj(self.req_dict[OBJECT_DATA_N])
-        if req_loc is None:
-            return self.make_http_response(False, 'LocationList update data invalid')
-        print(req_loc.use_type)
-        LocationList.add(req_loc, True)
+        try:
+            req_loc = LocationList.update_obj(self.req_dict[OBJECT_DATA_N])
+            if req_loc is None:
+                return self.make_http_response(False, 'LocationList update data invalid')
+            print(req_loc.use_type)
+            LocationList.add(req_loc, True)
+        except ObjectNotExist as e:
+            return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'update success')
 
     # delete LocationList item

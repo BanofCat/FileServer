@@ -37,9 +37,10 @@ class BaseTranslator(Resource):
     def get_base(self, obj_class, id=None):
         # get specify item by id
         if id is not None:
+            print('id is', id)
             req_obj = obj_class.get_by_id(id)
             if req_obj is None:
-                return self.make_http_response(False, '%s id not exist！' % obj_class.__name__)
+                return self.make_http_response(False, '%s id not exist' % obj_class.__name__)
             req_rob_dict = obj_class.to_dict(req_obj)
             return self.make_http_response(True, '%s %s info' % (obj_class.__name__, req_obj.id), msg_obj=req_rob_dict)
         # get item id list

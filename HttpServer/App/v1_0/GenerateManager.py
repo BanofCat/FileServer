@@ -14,7 +14,7 @@ class GenerateManager(JsonTranslator):
         super(GenerateManager, self).__init__()
 
     # get all GenerateData list or single GenerateData info by id
-    def get(self):
+    def get(self, id=None):
         # get specify GenerateData by id
         self.logger.info('%s: get' % __name__)
         return self.get_base(GenerateData, id)
@@ -22,23 +22,24 @@ class GenerateManager(JsonTranslator):
     # add new GenerateData or delete one by id
     def post(self):
         self.logger.info("%s: post" % __name__)
-        req_gen = GenerateData.to_obj(self.req_dict[OBJECT_DATA_N])
-        if GenerateData.is_exist(req_gen):
-            return self.make_http_response(False, 'GenerateData is exist, can not add any more!')
         try:
+            req_gen = GenerateData.to_obj(self.req_dict[OBJECT_DATA_N])
+            if GenerateData.is_exist(req_gen):
+                return self.make_http_response(False, 'GenerateData is exist, can not add any more!')
             GenerateData.add(req_gen)
         except ObjectNotExist as e:
             return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'Add GenerateData Success!')
 
-    def put(self, loc_id):
+    def put(self):
         self.logger.info('%s: put' % __name__)
-        location_obj = LocationList.get_by_id(loc_id)
-        print(LocationList.to_dict(location_obj))
-        req_gen = GenerateData.update_obj(self.req_dict[OBJECT_DATA_N], location_obj)
-        if req_gen is None:
-            return self.make_http_response(False, 'camera update data invalid')
-        GenerateData.add(req_gen)
+        try:
+            req_gen = GenerateData.update_obj(self.req_dict[OBJECT_DATA_N])
+            if req_gen is None:
+                return self.make_http_response(False, 'camera update data invalid')
+            GenerateData.add(req_gen)
+        except ObjectNotExist as e:
+            return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'update success')
 
     def delete(self, id):

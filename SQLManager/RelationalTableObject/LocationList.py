@@ -43,22 +43,22 @@ class LocationList(sql_object.Model, BaseObject):
         self.g_id = id
 
     def set_single_id(self, id):
-        if not SingleCalibration.is_exist_id(id):
+        if id is not None and not SingleCalibration.is_exist_id(id):
             raise ObjectNotExist('enter single data id is not exists')
         self.single_ca_id = id
 
     def set_stereo_id(self, id):
-        if not StereoCalibration.is_exist_id(id):
+        if id is not None and not StereoCalibration.is_exist_id(id):
             raise ObjectNotExist('enter stereo data id is not exists')
         self.stereo_ca_id = id
 
     def set_dh_id(self, id):
-        if not DH_Optimised.is_exist_id(id):
+        if id is not None and not DH_Optimised.is_exist_id(id):
             raise ObjectNotExist('enter dh data id is not exists')
         self.dh_id = id
 
     def set_inv_id(self, id):
-        if not InverseTest.is_exist_id(id):
+        if id is not None and not InverseTest.is_exist_id(id):
             raise ObjectNotExist('enter inv data id is not exists')
         self.inv_id = id
 
@@ -82,3 +82,26 @@ class LocationList(sql_object.Model, BaseObject):
                                 )
         print(new_loc.__dict__)
         return new_loc
+
+    @classmethod
+    def update_obj(cls, args_dict):
+        if LocationList.id.name not in args_dict:
+            raise ObjectNotExist('LocationList id is wrong')
+        loc = LocationList.get_by_id(args_dict[LocationList.id.name])
+        if loc is None:
+            raise ObjectNotExist('LocationList id is wrong')
+
+        # add origin data which are not in req data
+        for k in LocationList.__table__.columns:
+            if k.name in args_dict:
+                if k.name == LocationList.g_id.name:
+                    loc.set_gid(args_dict[k.name])
+                elif k.name == LocationList.single_ca_id.name:
+                    loc.set_single_id(args_dict[k.name])
+                elif k.name == LocationList.stereo_ca_id.name:
+                    loc.set_stereo_id(args_dict[k.name])
+                elif k.name == LocationList.dh_id.name:
+                    loc.set_dh_id(args_dict[k.name])
+                elif k.name == LocationList.inv_id.name:
+                    loc.set_inv_id(args_dict[k.name])
+        return loc

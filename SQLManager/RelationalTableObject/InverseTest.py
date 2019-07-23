@@ -3,7 +3,6 @@ from SQLManager import sql_object
 from SQLManager.RelationalTableObject.BaseObject import BaseObject
 from Configure.HttpSetting import *
 from Exception.SqlException import ObjectNotExist
-from SQLManager.RelationalTableObject.LocationList import LocationList
 
 
 class InverseTest(sql_object.Model, BaseObject):
@@ -43,24 +42,24 @@ class InverseTest(sql_object.Model, BaseObject):
 
     @classmethod
     def to_obj(cls, args_dict):
-        if LOCATION_ID_N not in args_dict:
-            raise ObjectNotExist('Location id is wrong')
-        location_obj = LocationList.get_by_id(args_dict[LOCATION_ID_N])
-        if location_obj is None:
-            raise ObjectNotExist('Location id is wrong')
-
-        for k in InverseTest.__table__.columns:
-            if k.name not in args_dict:
-                args_dict[k.name] = None
-
-        new_dh = InverseTest(  args_dict[InverseTest.opt_all_ik.name],
-                               args_dict[InverseTest.ik_err.name],
-                               args_dict[InverseTest.l_cam_img_pts.name],
-                               args_dict[InverseTest.r_cam_img_pts.name],
-                               args_dict[InverseTest.pixel_err.name],
-                               args_dict[InverseTest.total_pixel_err.name],
-                               location_obj
-                               )
+        # if LOCATION_ID_N not in args_dict:
+        #     raise ObjectNotExist('Location id is wrong')
+        # location_obj = LocationList.get_by_id(args_dict[LOCATION_ID_N])
+        # if location_obj is None:
+        #     raise ObjectNotExist('Location id is wrong')
+        #
+        # for k in InverseTest.__table__.columns:
+        #     if k.name not in args_dict:
+        #         args_dict[k.name] = None
+        #
+        # new_dh = InverseTest(  args_dict[InverseTest.opt_all_ik.name],
+        #                        args_dict[InverseTest.ik_err.name],
+        #                        args_dict[InverseTest.l_cam_img_pts.name],
+        #                        args_dict[InverseTest.r_cam_img_pts.name],
+        #                        args_dict[InverseTest.pixel_err.name],
+        #                        args_dict[InverseTest.total_pixel_err.name],
+        #                        location_obj
+        #                        )
         return new_dh
 
     @classmethod

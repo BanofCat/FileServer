@@ -27,13 +27,19 @@ class GenerateData(sql_object.Model, BaseObject):
         self.location_list = []
         self._set_data(robot_id, user_id, pic_date, dh_date, fb_date)
 
-    def _set_data(self, robot_id, user_id, pic_date=None, dh_date=None, fb_date=None):
+    def set_robot_id(self, robot_id):
         if not Robot.is_exist_id(robot_id):
-            raise ObjectNotExist("[Error]:robot is not exits which id is %s" % robot_id)
-        if not User.is_exist_id(user_id):
-            raise ObjectNotExist("[Error]:user is not exits which id is %s" % user_id)
+            raise ObjectNotExist('%s is not exist which id is %s' % (Robot.__name__, robot_id))
         self.robot_id = robot_id
+
+    def set_user_id(self, user_id):
+        if not User.is_exist_id(user_id):
+            raise ObjectNotExist('%s is not exist which id is %s' % (User.__name__, user_id))
         self.user_id = user_id
+
+    def _set_data(self, robot_id, user_id, pic_date=None, dh_date=None, fb_date=None):
+        self.set_robot_id(robot_id)
+        self.set_user_id(user_id)
         self.pic_date = pic_date
         self.dh_date = dh_date
         self.fb_date = fb_date
@@ -55,9 +61,7 @@ class GenerateData(sql_object.Model, BaseObject):
         return new_cam
 
     @classmethod
-    def update_obj(cls, args_dict, location_obj):
-        if location_obj is None:
-            raise ObjectNotExist('Location id is wrong')
+    def update_obj(cls, args_dict):
         if GenerateData.id.name not in args_dict:
             raise ObjectNotExist('GenerateData id is wrong')
         gen = GenerateData.get_by_id(args_dict[GenerateData.id.name])
@@ -67,7 +71,12 @@ class GenerateData(sql_object.Model, BaseObject):
         # add origin data which are not in req data
         for k in GenerateData.__table__.columns:
             if k.name in args_dict:
-                setattr(gen, k.name, args_dict[k.name])
-        return ste
+                if k.name == GenerateData.robot_id.name:
+                    gen.set_robot_id(args_dict[k.name])
+                elif k.name == GenerateData.user_id.name:
+                    gen.set_user_id(args_dict[k.name])
+                else:
+                    setattr(gen, k.name, args_dict[k.name])
+        return gen
 
 

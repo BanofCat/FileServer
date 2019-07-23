@@ -44,6 +44,6 @@ class CameraManager(JsonTranslator):
     # delete camera item
     def delete(self, id):
         self.logger.info('%s: delete' % __name__)
-        return self.delete_base(CameraManager, id)
+        return self.delete_base(Camera, id)
 
 
