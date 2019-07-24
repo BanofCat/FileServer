@@ -28,12 +28,17 @@ class JsonTranslator(BaseTranslator):
     @classmethod
     def to_dict(cls, args):
         str_args = ""
+        print('tttttttttt: ', type(args))
+        if args is None:
+            return None
         if isinstance(args, bytes):
             str_args = args.decode('ascii')
         elif isinstance(args, dict):
             str_args = dict(map(JsonTranslator.to_dict, args.items()))
         elif isinstance(args, tuple):
             str_args = map(JsonTranslator.convert, args)
+        if str_args == '':
+            return None
         return json.loads(str_args)
 
 

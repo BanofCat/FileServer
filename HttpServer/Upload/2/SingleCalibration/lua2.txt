@@ -1,0 +1,10 @@
+setSpeed(100)
+setAccel(100)
+
+while 1<2  
+do
+	go(P1)
+	luaSleep(3)
+	go(P2)
+	luaSleep(3)
+end

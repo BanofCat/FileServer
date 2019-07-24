@@ -38,7 +38,7 @@ def url_init(api_obj):
     # camera
     api_obj.add_resource(
         CameraManager,
-        '/v1_0/camera/<string:id>',
+        '/v1_0/camera/<string:id>/',
         endpoint='Camera'
     )
 
@@ -57,20 +57,20 @@ def url_init(api_obj):
 
     api_obj.add_resource(
         RobotManager,
-        '/v1_0/robot/<string:id>',
+        '/v1_0/robot/<string:id>/',
         endpoint='Robot'
     )
 
     # file upload and download
     api_obj.add_resource(
         FileUpload,
-        '/v1_0/%s/' % UPLOAD_END_POINT,
+        '/v1_0/%s/<int:location_id>/<string:table_name>/' % UPLOAD_END_POINT,
         endpoint='Upload'
     )
 
     api_obj.add_resource(
         FileDownload,
-        '/v1_0/%s/<string:filename>' % DOWNLOAD_END_POINT,
+        '/v1_0/%s/<int:location_id>/<string:table_name>/<string:filename>/' % DOWNLOAD_END_POINT,
         endpoint='Download'
     )
 
@@ -82,7 +82,7 @@ def url_init(api_obj):
     )
     api_obj.add_resource(
         GenerateManager,
-        '/v1_0/generate/<int:id>',
+        '/v1_0/generate/<int:id>/',
         endpoint='Generate'
     )
 
@@ -95,35 +95,65 @@ def url_init(api_obj):
 
     api_obj.add_resource(
         LocationManager,
-        '/v1_0/location/<int:id>',
+        '/v1_0/location/<int:id>/',
         endpoint='Location'
     )
 
     # single data
     api_obj.add_resource(
         SingleManager,
-        '/v1_0/single/<int:loc_id>',
-        endpoint='Single'
+        '/v1_0/single/',
+        endpoint='SingleList'
     )
+
+    # single data
+    api_obj.add_resource(
+        SingleManager,
+        '/v1_0/single/<int:id>/',
+        endpoint='SingleItem'
+    )
+
+    # api_obj.add_resource(
+    #     SingleManager,
+    #     '/v1_0/single/<int:loc_id>',
+    #     endpoint='Single'
+    # )
 
     # stereo data
     api_obj.add_resource(
         StereoManager,
-        '/v1_0/stereo/<int:loc_id>',
+        '/v1_0/stereo/',
+        endpoint='StereoList'
+    )
+
+    api_obj.add_resource(
+        StereoManager,
+        '/v1_0/stereo/<int:id>/',
         endpoint='Stereo'
     )
 
     # dh data
     api_obj.add_resource(
         DH_OptimisedManager,
-        '/v1_0/dh/<int:loc_id>',
+        '/v1_0/dh/<int:id>/',
+        endpoint='DH_List'
+    )
+    api_obj.add_resource(
+        DH_OptimisedManager,
+        '/v1_0/dh/',
         endpoint='DH'
     )
 
     # inverse data
     api_obj.add_resource(
         InverseManager,
-        '/v1_0/inverse/<int:loc_id>',
+        '/v1_0/inverse/',
+        endpoint='InverseList'
+    )
+
+    api_obj.add_resource(
+        InverseManager,
+        '/v1_0/inverse/<int:id>/',
         endpoint='Inverse'
     )
 

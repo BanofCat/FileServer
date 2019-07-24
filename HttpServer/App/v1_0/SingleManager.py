@@ -17,36 +17,46 @@ class SingleManager(JsonTranslator):
         super(SingleManager, self).__init__()
 
     # get all SingleCalibration list or single SingleCalibration info by id
-    def get(self, id):
+    def get(self, id=None):
         # get specify SingleCalibration by id
         self.logger.info('%s: get' % __name__)
         return self.get_base(SingleCalibration, id)
 
     # add new SingleCalibration or delete one by id
     # @AuthManager.user_auth
-    def post(self):
+    def post(self, id=None):
         self.logger.info("%s: post" % __name__)
+        if id is None:
+            return self.make_http_response(False, 'need a location id, single data should be bind to a location item')
         try:
-            if GENERA_ID_N not in self.req_dict:
-                return self.make_http_response(False, 'you should set generate data table before you add this')
-            req_obj = SingleCalibration.to_obj(self.req_dict[OBJECT_DATA_N])
+            location_obj = LocationList.get_by_id(id)
+            if location_obj is None:
+                raise ObjectNotExist('Location id is wrong')
+            req_obj = SingleCalibration.to_obj(self.req_dict[OBJECT_DATA_N], location_obj)
             if SingleCalibration.is_exist(req_obj):
                 return self.make_http_response(False, 'SingleCalibration is exist, can not add any more!')
-            SingleCalibration.add(req_obj)
+            # commit the data , so id will refresh from database
+            SingleCalibration.add(req_obj, True)
+            location_obj.set_single_id(req_obj.id)
+            LocationList.add(location_obj)
         except ObjectNotExist as e:
             self.logger.error(e.what())
             return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'Add SingleCalibration Success!')
 
-    def put(self, loc_id):
+    def put(self, id):
         self.logger.info("%s: put" % __name__)
-        self.logger.info("id: %d" % loc_id)
-        location_obj = LocationList.get_by_id(loc_id)
-        print(LocationList.to_dict(location_obj))
-        req_ste = SingleCalibration.update_obj(self.req_dict[OBJECT_DATA_N], location_obj)
-        if req_ste is None:
-            return self.make_http_response(False, 'camera update data invalid')
-        SingleCalibration.add(req_ste)
+        try:
+            loc_obj = LocationList.get_by_id(id)
+            if loc_obj is None:
+                return self.make_http_response(False, 'Location obj is not exist which id is %s' % str(id))
+            req_ste = SingleCalibration.update_obj(self.req_dict[OBJECT_DATA_N], loc_obj)
+            if req_ste is None:
+                return self.make_http_response(False, 'camera update data invalid')
+            SingleCalibration.add(req_ste)
+        except ObjectNotExist as e:
+            self.logger.error(e.what())
+            return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'update success')
 
     def delete(self, id):
