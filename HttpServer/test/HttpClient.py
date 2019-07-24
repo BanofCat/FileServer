@@ -21,6 +21,7 @@ class WSGIClient(object):
         'download_url':     root_url + '/download/',
         'logout_url':       root_url + '/logout/',
         'camera_url':       root_url + '/camera/',
+        'single_url':       root_url + '/single/',
         'stereo_url':       root_url + '/stereo/',
         'location_url':     root_url + '/location/',
         'generate_url':     root_url + '/generate/',
@@ -91,7 +92,7 @@ class WSGIClient(object):
             loc_id = ''
         if is_add:
             ret = self.session.post(
-                url,
+                url + str(loc_id),
                 headers=self.headers_dict,
                 json=data
             )
@@ -199,8 +200,9 @@ class WSGIClient(object):
 
     # stereo API
     def _stereo_pack(self, l_id, r_id, l_cam_matrix=None, r_cam_matrix=None, l_dist_coeffs=None, r_dist_coeffs=None,
-                     rt_cam_a2_cam_b=None, stereo_e=None, stereo_f=None, stereo_r=None, pixel_err=None):
+                     rt_cam_a2_cam_b=None, stereo_e=None, stereo_f=None, stereo_r=None, pixel_err=None, s_id=None):
         obj_data = {
+            'id': s_id,
             'l_camera_id': l_id,
             'r_camera_id': r_id,
             'l_cam_matrix': l_cam_matrix,
@@ -216,16 +218,16 @@ class WSGIClient(object):
         }
         return obj_data
 
-    def stereo_add(self, l_id, r_id, l_cam_matrix=None, r_cam_matrix=None, l_dist_coeffs=None, r_dist_coeffs=None,
+    def stereo_add(self, loc_id, l_id, r_id, l_cam_matrix=None, r_cam_matrix=None, l_dist_coeffs=None, r_dist_coeffs=None,
                      rt_cam_a2_cam_b=None, stereo_e=None, stereo_f=None, stereo_r=None, pixel_err=None):
         obj_data =  self._stereo_pack(l_id, r_id, l_cam_matrix, r_cam_matrix, l_dist_coeffs, r_dist_coeffs,
                      rt_cam_a2_cam_b, stereo_e, stereo_f, stereo_r, pixel_err)
-        return self._obj_add(obj_data, self.url_dict['stereo_url'], True)
+        return self._obj_add(obj_data, self.url_dict['stereo_url'], True, loc_id)
 
-    def stereo_update(self, loc_id, l_id, r_id, l_cam_matrix=None, r_cam_matrix=None, l_dist_coeffs=None, r_dist_coeffs=None,
+    def stereo_update(self, loc_id, s_id, l_id=None, r_id=None, l_cam_matrix=None, r_cam_matrix=None, l_dist_coeffs=None, r_dist_coeffs=None,
                      rt_cam_a2_cam_b=None, stereo_e=None, stereo_f=None, stereo_r=None, pixel_err=None):
         obj_data =  self._stereo_pack(l_id, r_id, l_cam_matrix, r_cam_matrix, l_dist_coeffs, r_dist_coeffs,
-                     rt_cam_a2_cam_b, stereo_e, stereo_f, stereo_r, pixel_err)
+                     rt_cam_a2_cam_b, stereo_e, stereo_f, stereo_r, pixel_err, s_id)
         return self._obj_add(obj_data, self.url_dict['stereo_url'], False, loc_id)
 
     def stereo_get(self, id=None):
@@ -234,8 +236,9 @@ class WSGIClient(object):
     # single API
     def _single_pack(self, camera_id, n_camera_args=None, p_camera_args=None, n_distortion=None, p_distortion=None,
                      n_toc=None, p_toc=None, n_projection_err=None, p_projection_err=None, found_mask=None,
-                     img_pts=None, img_size=None, obj_ptr=None):
+                     img_pts=None, img_size=None, obj_ptr=None, s_id=None):
         obj_data = {
+            'id': s_id,
             'camera_id': camera_id,
             'n_camera_args': n_camera_args,
             'p_camera_args': p_camera_args,
@@ -252,20 +255,20 @@ class WSGIClient(object):
         }
         return obj_data
 
-    def single_add(self, camera_id, n_camera_args=None, p_camera_args=None, n_distortion=None, p_distortion=None,
+    def single_add(self, loc_id, camera_id, n_camera_args=None, p_camera_args=None, n_distortion=None, p_distortion=None,
                      n_toc=None, p_toc=None, n_projection_err=None, p_projection_err=None, found_mask=None,
                      img_pts=None, img_size=None, obj_ptr=None):
         obj_data =  self._single_pack(camera_id, n_camera_args, p_camera_args, n_distortion, p_distortion,
                      n_toc, p_toc, n_projection_err, p_projection_err, found_mask,
                      img_pts, img_size, obj_ptr)
-        return self._obj_add(obj_data, self.url_dict['single_url'], True)
+        return self._obj_add(obj_data, self.url_dict['single_url'], True, loc_id)
 
-    def single_update(self, loc_id, camera_id, n_camera_args=None, p_camera_args=None, n_distortion=None, p_distortion=None,
+    def single_update(self, loc_id, s_id, camera_id=None, n_camera_args=None, p_camera_args=None, n_distortion=None, p_distortion=None,
                      n_toc=None, p_toc=None, n_projection_err=None, p_projection_err=None, found_mask=None,
                      img_pts=None, img_size=None, obj_ptr=None):
         obj_data =  self._single_pack(camera_id, n_camera_args, p_camera_args, n_distortion, p_distortion,
                      n_toc, p_toc, n_projection_err, p_projection_err, found_mask,
-                     img_pts, img_size, obj_ptr)
+                     img_pts, img_size, obj_ptr, s_id)
         return self._obj_add(obj_data, self.url_dict['single_url'], False, loc_id)
 
     def single_get(self, id=None):
@@ -274,8 +277,9 @@ class WSGIClient(object):
 
     # DH optimise API
     def _dh_pack(self, model, angle_offset_full=None, joint_scale_factor=None, refine_pixel_err=None,
-                robot_parm=None, tot=None, trc=None, a_offset_six_parm=None, c_offset_six_parm=None):
+                robot_parm=None, tot=None, trc=None, a_offset_six_parm=None, c_offset_six_parm=None, d_id=None):
         obj_data = {
+            'id': d_id,
             'model': model,
             'angle_offset_full': angle_offset_full,
             'joint_scale_factor': joint_scale_factor,
@@ -288,16 +292,16 @@ class WSGIClient(object):
         }
         return obj_data
 
-    def dh_add(self, model, angle_offset_full=None, joint_scale_factor=None, refine_pixel_err=None,
+    def dh_add(self, loc_id, model, angle_offset_full=None, joint_scale_factor=None, refine_pixel_err=None,
                 robot_parm=None, tot=None, trc=None, a_offset_six_parm=None, c_offset_six_parm=None):
         obj_data =  self._dh_pack(model, angle_offset_full, joint_scale_factor, refine_pixel_err,
                 robot_parm, tot, trc, a_offset_six_parm, c_offset_six_parm)
-        return self._obj_add(obj_data, self.url_dict['dh_url'], True)
+        return self._obj_add(obj_data, self.url_dict['dh_url'], True, loc_id)
 
-    def dh_update(self, loc_id, model, angle_offset_full=None, joint_scale_factor=None, refine_pixel_err=None,
+    def dh_update(self, loc_id, d_id, model=None, angle_offset_full=None, joint_scale_factor=None, refine_pixel_err=None,
                 robot_parm=None, tot=None, trc=None, a_offset_six_parm=None, c_offset_six_parm=None):
         obj_data =  self._dh_pack(model, angle_offset_full, joint_scale_factor, refine_pixel_err,
-                robot_parm, tot, trc, a_offset_six_parm, c_offset_six_parm)
+                robot_parm, tot, trc, a_offset_six_parm, c_offset_six_parm, d_id)
         return self._obj_add(obj_data, self.url_dict['dh_url'], False, loc_id)
 
     def dh_get(self, id=None):
@@ -306,8 +310,9 @@ class WSGIClient(object):
 
     # inverse optimise API
     def _inverse_pack(self, opt_all_ik=None, ik_err=None, l_cam_img_pts=None, r_cam_img_pts=None,
-                pixel_err=None, total_pixel_err=None):
+                pixel_err=None, total_pixel_err=None, i_id=None):
         obj_data = {
+            'id': i_id,
             'opt_all_ik': opt_all_ik,
             'ik_err': ik_err,
             'l_cam_img_pts': l_cam_img_pts,
@@ -317,14 +322,14 @@ class WSGIClient(object):
         }
         return obj_data
 
-    def inverse_add(self, opt_all_ik=None, ik_err=None, l_cam_img_pts=None, r_cam_img_pts=None,
+    def inverse_add(self, loc_id, opt_all_ik=None, ik_err=None, l_cam_img_pts=None, r_cam_img_pts=None,
                 pixel_err=None, total_pixel_err=None):
         obj_data =  self._inverse_pack(opt_all_ik, ik_err, l_cam_img_pts, r_cam_img_pts, pixel_err, total_pixel_err)
-        return self._obj_add(obj_data, self.url_dict['inverse_url'], True)
+        return self._obj_add(obj_data, self.url_dict['inverse_url'], True, loc_id)
 
-    def inverse_update(self, loc_id, opt_all_ik=None, ik_err=None, l_cam_img_pts=None, r_cam_img_pts=None,
+    def inverse_update(self, loc_id, i_id, opt_all_ik=None, ik_err=None, l_cam_img_pts=None, r_cam_img_pts=None,
                 pixel_err=None, total_pixel_err=None):
-        obj_data =  self._inverse_pack(opt_all_ik, ik_err, l_cam_img_pts, r_cam_img_pts, pixel_err, total_pixel_err)
+        obj_data =  self._inverse_pack(opt_all_ik, ik_err, l_cam_img_pts, r_cam_img_pts, pixel_err, total_pixel_err, i_id)
         return self._obj_add(obj_data, self.url_dict['inverse_url'], False, loc_id)
 
     def inverse_get(self, id=None):
@@ -356,11 +361,11 @@ class WSGIClient(object):
 
 
 
-    def files_upload(self, file_list):
-        print 'files_upload: %s' % str(file_list)
+    def files_upload(self, file_list, loc_id, table_name):
+        print('start files_upload: %s' % str(file_list))
         files_dict = {}
         for item in file_list:
-            print 'item: %s' % str(item)
+            print('item: %s' % str(item))
             if not os.path.isfile(item):
                 return False
             files_dict[os.path.basename(item)] = open(item, 'rb')
@@ -368,19 +373,19 @@ class WSGIClient(object):
         # files_dict = {
         #     'lua1.lua': file_open
         # }
-        print '---', files_dict
+        print('---', files_dict)
         # print '---', files_dict['lua1.lua'].read()
-
         header = {
             # 'Content-Type': 'multipart/form-data',
             # 'Authorization': 'jwt %s' % self.token
         }
         ret = self.session.post(
-            self.url_dict['upload_url'],
+            self.url_dict['upload_url'] + str(loc_id) + '/' + table_name,
             headers=header,
             files=files_dict
         )
-        print('files_upload: %s' % ret.json())
+
+        print('files_upload return: %s' % ret.json())
 
     def file_download(self, filename, file_dir):
         print 'files_download: %s' % str(filename)
@@ -493,19 +498,38 @@ class WSGIClient(object):
 
 
 
-def upload_test():
+def upload_test(client):
 
-    file_list = (
-        './upload_test/lua1.lua',
-        './upload_test/lua2.txt',
-        './upload_test/lua3.lua',
-        './upload_test/lua4.lua',
-        './upload_test/lua5.lua',
-        './upload_test/test.pts',
-        './upload_test/temp.txt',
-    )
-    client = WSGIClient()
-    client.files_upload(file_list)
+    client.files_upload(['/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/lua2.txt',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/c.txt',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/a.png',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/d.txt',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/e.txt'
+                        ], 2, 'GenerateData')
+    client.files_upload(['/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/lua2.txt',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/c.txt',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/a.png',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/d.txt',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/e.txt'
+                        ], 2, 'SingleCalibration')
+    client.files_upload(['/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/lua2.txt',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/c.txt',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/a.png',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/d.txt',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/e.txt'
+                        ], 2, 'StereoCalibration')
+    client.files_upload(['/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/lua2.txt',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/c.txt',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/a.png',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/d.txt',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/e.txt'
+                        ], 2, 'DH_Optimised')
+    client.files_upload(['/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/lua2.txt',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/c.txt',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/a.png',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/d.txt',
+                         '/home/ban/Ban/Ban/work/version4/Develop/develop/Flask_WebServer/WebRC/upload_file/1/e.txt'
+                        ], 2, 'InverseTest')
 
 def download_test():
     client = WSGIClient()
@@ -523,8 +547,7 @@ def delete_test():
     client.delete_file('temp.txt')
     client.delete_file('lua4.lua')
 
-def robot_test():
-    client = WSGIClient()
+def robot_test(client):
     client.robot_get()
     client.robot_add('IronMan', '5', 'RR')
     client.robot_add('BatMan', '4', 'KENT')
@@ -536,8 +559,7 @@ def robot_test():
     client.robot_get('IronMan')
     client.robot_get()
 
-def camera_test():
-    client = WSGIClient()
+def camera_test(client):
     client.camera_get()
     client.camera_add('Google', 'L', 'RR')
     client.camera_add('MicroSoft', 'R', 'KENT')
@@ -550,8 +572,7 @@ def camera_test():
     client.camera_get()
 
 
-def generate_test():
-    client = WSGIClient()
+def generate_test(client):
     client.generate_get()
     client.generate_add('IronMan', 1, str(datetime.datetime.now()), str(datetime.datetime.now()))
     client.generate_add('BatMan', 1, str(datetime.datetime.now()), str(datetime.datetime.now()))
@@ -565,17 +586,60 @@ def generate_test():
     client.generate_get()
 
 
-def location_test():
-    client = WSGIClient()
-    # client.location_get()
-    # client.location_add(g_id=1)
-    # client.location_add(g_id=2)
-    # client.location_add(g_id=3)
-    # client.location_get()
-    # client.location_get(1)
+def location_test(client):
+    client.location_get()
+    client.location_add(g_id=1)
+    client.location_add(g_id=2)
+    client.location_add(g_id=3)
+    client.location_get()
+    client.location_get(1)
     client.location_update(loc_id=1, g_id=2)
-    # client.location_get(2)
-    # client.location_get()
+    client.location_get(2)
+    client.location_get()
+
+def single_test(client):
+    client.single_get()
+    client.single_add(2, 'qwe', 'url_test')
+    client.single_add(2, 'abc', 'd.txt')
+    client.single_add(loc_id=1, camera_id='MicroSoft', n_camera_args='c.txt')
+    client.single_get()
+    client.single_get(1)
+    client.single_update(loc_id=2, camera_id='def', s_id=3, p_camera_args='d.txt')
+    client.single_get(2)
+    client.single_get()
+
+def stereo_test(client):
+    client.stereo_get()
+    client.stereo_add(2, 'qwe', 'abc')
+    client.stereo_add(2, 'abc', 'def')
+    client.stereo_add(loc_id=2, l_id='MicroSoft', r_id='abc', l_cam_matrix='c.txt')
+    client.stereo_get()
+    client.stereo_get(1)
+    client.stereo_update(loc_id=2, s_id=3, l_cam_matrix='d.txt')
+    client.stereo_get(2)
+    client.stereo_get()
+
+def dh_test(client):
+    client.dh_get()
+    client.dh_add(2, 'qwe', 'abc')
+    client.dh_add(2, 'SM', 'e.txt')
+    client.dh_add(2, 'Faset', joint_scale_factor='c.txt')
+    client.dh_get()
+    client.dh_get(1)
+    client.dh_update(2, d_id=2, joint_scale_factor='d.txt')
+    client.dh_get(2)
+    client.dh_get()
+
+def inverse_test(client):
+    client.inverse_get()
+    client.inverse_add(2, 'qwe', 'abc')
+    client.inverse_add(2, 'e.txt', 'qwe')
+    client.inverse_add(2, 'e.txt', 'c.txt')
+    client.inverse_get()
+    client.inverse_get(1)
+    client.inverse_update(2, i_id=1, opt_all_ik='d.txt')
+    client.inverse_get(2)
+    client.inverse_get()
 
 
 test_account = 'test'
@@ -594,10 +658,16 @@ admin_robot_type = 'KENT'
 admin_robot_joints = 4
 
 if __name__ == '__main__':
-    location_test()
-    # generate_test()
-    # robot_test()
-    # camera_test()
+    client = WSGIClient()
+    inverse_test(client)
+    dh_test(client)
+    stereo_test(client)
+    single_test(client)
+    # location_test(client)
+    # generate_test(client)
+    # robot_test(client)
+    # camera_test(client)
+    # upload_test(client)
     # web_client = WSGIClient()
     # 注册
     # web_client.register('ban', '123123')
