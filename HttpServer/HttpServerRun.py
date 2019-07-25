@@ -42,18 +42,18 @@ def url_init(api_obj):
         endpoint='Camera'
     )
 
-    api_obj.add_resource(
-        CameraManager,
-        '/v1_0/camera/',
-        endpoint='CameraList'
-    )
+    # api_obj.add_resource(
+    #     CameraManager,
+    #     '/v1_0/camera/',
+    #     endpoint='CameraList'
+    # )
 
     # robot
-    api_obj.add_resource(
-        RobotManager,
-        '/v1_0/robot/',
-        endpoint='RobotList'
-    )
+    # api_obj.add_resource(
+    #     RobotManager,
+    #     '/v1_0/robot/',
+    #     endpoint='RobotList'
+    # )
 
     api_obj.add_resource(
         RobotManager,
@@ -75,11 +75,11 @@ def url_init(api_obj):
     )
 
     # generate data
-    api_obj.add_resource(
-        GenerateManager,
-        '/v1_0/generate/',
-        endpoint='GenerateList'
-    )
+    # api_obj.add_resource(
+    #     GenerateManager,
+    #     '/v1_0/generate/',
+    #     endpoint='GenerateList'
+    # )
     api_obj.add_resource(
         GenerateManager,
         '/v1_0/generate/<int:id>/',
@@ -87,11 +87,11 @@ def url_init(api_obj):
     )
 
     # location data
-    api_obj.add_resource(
-        LocationManager,
-        '/v1_0/location/',
-        endpoint='LocationList'
-    )
+    # api_obj.add_resource(
+    #     LocationManager,
+    #     '/v1_0/location/',
+    #     endpoint='LocationList'
+    # )
 
     api_obj.add_resource(
         LocationManager,
@@ -100,11 +100,11 @@ def url_init(api_obj):
     )
 
     # single data
-    api_obj.add_resource(
-        SingleManager,
-        '/v1_0/single/',
-        endpoint='SingleList'
-    )
+    # api_obj.add_resource(
+    #     SingleManager,
+    #     '/v1_0/single/',
+    #     endpoint='SingleList'
+    # )
 
     # single data
     api_obj.add_resource(
@@ -120,11 +120,11 @@ def url_init(api_obj):
     # )
 
     # stereo data
-    api_obj.add_resource(
-        StereoManager,
-        '/v1_0/stereo/',
-        endpoint='StereoList'
-    )
+    # api_obj.add_resource(
+    #     StereoManager,
+    #     '/v1_0/stereo/',
+    #     endpoint='StereoList'
+    # )
 
     api_obj.add_resource(
         StereoManager,
@@ -138,18 +138,18 @@ def url_init(api_obj):
         '/v1_0/dh/<int:id>/',
         endpoint='DH_List'
     )
-    api_obj.add_resource(
-        DH_OptimisedManager,
-        '/v1_0/dh/',
-        endpoint='DH'
-    )
+    # api_obj.add_resource(
+    #     DH_OptimisedManager,
+    #     '/v1_0/dh/',
+    #     endpoint='DH'
+    # )
 
     # inverse data
-    api_obj.add_resource(
-        InverseManager,
-        '/v1_0/inverse/',
-        endpoint='InverseList'
-    )
+    # api_obj.add_resource(
+    #     InverseManager,
+    #     '/v1_0/inverse/',
+    #     endpoint='InverseList'
+    # )
 
     api_obj.add_resource(
         InverseManager,

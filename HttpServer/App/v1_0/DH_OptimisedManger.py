@@ -24,12 +24,16 @@ class DH_OptimisedManager(JsonTranslator):
 
     # add new DH_Optimised or delete one by id
     # @AuthManager.user_auth
-    def post(self, id):
+    def post(self, id=None):
         self.logger.info("%s: post" % __name__)
         try:
+            if id is not None:
+                return self.make_http_response(False, 'this request method need not id arg')
             location_obj = LocationList.get_by_id(id)
             if location_obj is None:
                 return self.make_http_response(False, 'Location obj is not exist which id is %s' % str(id))
+            if OBJECT_DATA_N not in self.req_dict:
+                return self.make_http_response(False, 'request data is invalid')
             req_obj = DH_Optimised.to_obj(self.req_dict[OBJECT_DATA_N], location_obj)
             if DH_Optimised.is_exist(req_obj):
                 return self.make_http_response(False, 'DH_Optimised is exist, can not add any more!')
@@ -42,12 +46,15 @@ class DH_OptimisedManager(JsonTranslator):
             return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'Add DH_Optimised Success!')
 
-    def put(self, id):
+    def put(self, id=None):
         self.logger.info("%s: put" % __name__)
         self.logger.info("id: %d" % id)
         try:
+            if id is not None:
+                return self.make_http_response(False, 'this request method need not id arg')
             location_obj = LocationList.get_by_id(id)
-            print(LocationList.to_dict(location_obj))
+            if OBJECT_DATA_N not in self.req_dict:
+                return self.make_http_response(False, 'request data is invalid')
             req_ste = DH_Optimised.update_obj(self.req_dict[OBJECT_DATA_N], location_obj)
             if req_ste is None:
                 return self.make_http_response(False, 'camera update data invalid')
@@ -57,8 +64,10 @@ class DH_OptimisedManager(JsonTranslator):
             return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'update success')
 
-    def delete(self, id):
+    def delete(self, id=None):
         self.logger.info('%s: delete' % __name__)
+        if id is None:
+            return self.make_http_response(False, 'this request method need a id arg')
         ste_obj = DH_Optimised.get_by_id(id)
         if ste_obj is None:
             return self.make_http_response(False, 'delete stereo data not exist')

@@ -20,9 +20,13 @@ class GenerateManager(JsonTranslator):
         return self.get_base(GenerateData, id)
 
     # add new GenerateData or delete one by id
-    def post(self):
+    def post(self, id=None):
         self.logger.info("%s: post" % __name__)
         try:
+            if id is not None:
+                return self.make_http_response(False, 'this request method need not id arg')
+            if OBJECT_DATA_N not in self.req_dict:
+                return self.make_http_response(False, 'request data is invalid')
             req_gen = GenerateData.to_obj(self.req_dict[OBJECT_DATA_N])
             if GenerateData.is_exist(req_gen):
                 return self.make_http_response(False, 'GenerateData is exist, can not add any more!')
@@ -31,9 +35,13 @@ class GenerateManager(JsonTranslator):
             return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'Add GenerateData Success!')
 
-    def put(self):
+    def put(self, id=None):
         self.logger.info('%s: put' % __name__)
         try:
+            if id is not None:
+                return self.make_http_response(False, 'this request method need not id arg')
+            if OBJECT_DATA_N not in self.req_dict:
+                return self.make_http_response(False, 'request data is invalid')
             req_gen = GenerateData.update_obj(self.req_dict[OBJECT_DATA_N])
             if req_gen is None:
                 return self.make_http_response(False, 'camera update data invalid')
@@ -42,8 +50,10 @@ class GenerateManager(JsonTranslator):
             return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'update success')
 
-    def delete(self, id):
+    def delete(self, id=None):
         self.logger.info('%s: delete' % __name__)
+        if id is None:
+            return self.make_http_response(False, 'this request method need a id arg')
         ste_obj = GenerateData.get_by_id(id)
         if ste_obj is None:
             return self.make_http_response(False, 'delete stereo data not exist')

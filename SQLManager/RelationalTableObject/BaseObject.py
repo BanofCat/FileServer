@@ -26,7 +26,7 @@ class BaseObject(object):
         pass
 
     @classmethod
-    def add(cls, db_obj, need_commit=False):
+    def add(cls, db_obj, need_commit=True):
         print("in %s: add" % cls.__name__)
         if not isinstance(db_obj, sql_object.Model):
             print("add obj failed, %s is not a db model object" % db_obj)
@@ -76,16 +76,14 @@ class BaseObject(object):
     def to_dict(cls, o):
         print('%s: to_dict' % __name__)
         if isinstance(o, list):
-            obj_counter = 0
-            obj_dict = {}
+            obj_list = []
             for item in o:
                 if isinstance(item, sql_object.Model):
-                    obj_dict[item.__tablename__ + str(obj_counter)] = BaseObject.to_dict(item)
-                    obj_counter += 1
+                    obj_list.append(BaseObject.to_dict(item))
                 else:
                     print('can not recognize type: %s' % type(item))
-            print("to_dict_list: ", obj_dict)
-            return obj_dict
+            print("to_dict_list: ", obj_list)
+            return obj_list
         elif isinstance(o.__class__, DeclarativeMeta):
             fields = {}
             counter = 0

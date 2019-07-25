@@ -18,9 +18,13 @@ class RobotManager(JsonTranslator):
         return self.get_base(Robot, id)
 
     # add new Robot or delete one by id
-    def post(self):
+    def post(self, id=None):
         self.logger.info("%s: post" % __name__)
+        if id is not None:
+            return self.make_http_response(False, 'need not a id arg')
         try:
+            if OBJECT_DATA_N not in self.req_dict:
+                return self.make_http_response(False, 'request data is invalid')
             req_cam = Robot.to_obj(self.req_dict[OBJECT_DATA_N])
             if Robot.is_exist(req_cam):
                 return self.make_http_response(False, 'Robot is exist, can not add any more!')
@@ -30,9 +34,13 @@ class RobotManager(JsonTranslator):
         return self.make_http_response(True, 'Add Robot Success!')
 
     # update Robot data
-    def put(self):
+    def put(self, id=None):
         self.logger.info("%s: put" % __name__)
+        if id is not None:
+            return self.make_http_response(False, 'need not a id arg')
         try:
+            if OBJECT_DATA_N not in self.req_dict:
+                return self.make_http_response(False, 'request data is invalid')
             req_cam = Robot.update_obj(self.req_dict[OBJECT_DATA_N])
             if req_cam is None:
                 return self.make_http_response(False, 'Robot update data invalid')
@@ -42,7 +50,9 @@ class RobotManager(JsonTranslator):
         return self.make_http_response(True, 'update success')
 
     # delete robot item
-    def delete(self, id):
+    def delete(self, id=None):
+        if id is not None:
+            return self.make_http_response(False, 'need a id arg')
         self.logger.info('%s: delete' % __name__)
         return self.delete_base(Robot, id)
 

@@ -64,7 +64,7 @@ class BaseTranslator(Resource):
                 raise DBException
         except DBException as e:
             return self.make_http_response(False, 'delete id is not exist')
-        return self.make_http_response(True, 'delete success')
+        return self.make_http_response(True, 'delete success', msg_obj=obj_class.to_dict(obj))
     # @abc.abstractmethod
     # def post(self, obj_class, id=None, obj_data=None):
     #     # add new item

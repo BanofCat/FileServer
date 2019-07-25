@@ -32,6 +32,8 @@ class SingleManager(JsonTranslator):
             location_obj = LocationList.get_by_id(id)
             if location_obj is None:
                 raise ObjectNotExist('Location id is wrong')
+            if OBJECT_DATA_N not in self.req_dict:
+                return self.make_http_response(False, 'request data is invalid')
             req_obj = SingleCalibration.to_obj(self.req_dict[OBJECT_DATA_N], location_obj)
             if SingleCalibration.is_exist(req_obj):
                 return self.make_http_response(False, 'SingleCalibration is exist, can not add any more!')
@@ -44,12 +46,16 @@ class SingleManager(JsonTranslator):
             return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'Add SingleCalibration Success!')
 
-    def put(self, id):
+    def put(self, id=None):
         self.logger.info("%s: put" % __name__)
         try:
+            if id is not None:
+                return self.make_http_response(False, 'need not a id arg')
             loc_obj = LocationList.get_by_id(id)
             if loc_obj is None:
                 return self.make_http_response(False, 'Location obj is not exist which id is %s' % str(id))
+            if OBJECT_DATA_N not in self.req_dict:
+                return self.make_http_response(False, 'request data is invalid')
             req_ste = SingleCalibration.update_obj(self.req_dict[OBJECT_DATA_N], loc_obj)
             if req_ste is None:
                 return self.make_http_response(False, 'camera update data invalid')
@@ -59,8 +65,10 @@ class SingleManager(JsonTranslator):
             return self.make_http_response(False, e.what())
         return self.make_http_response(True, 'update success')
 
-    def delete(self, id):
+    def delete(self, id=None):
         self.logger.info('%s: delete' % __name__)
+        if id is None:
+            return self.make_http_response(False, 'need a id arg')
         ste_obj = SingleCalibration.get_by_id(id)
         if ste_obj is None:
             return self.make_http_response(False, 'delete stereo data not exist')
