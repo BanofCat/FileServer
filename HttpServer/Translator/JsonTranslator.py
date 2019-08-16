@@ -28,7 +28,7 @@ class JsonTranslator(BaseTranslator):
     @classmethod
     def to_dict(cls, args):
         str_args = ""
-        print('tttttttttt: ', type(args))
+        print('tttttttttt: ', type(args), args)
         if args is None:
             return None
         if isinstance(args, bytes):

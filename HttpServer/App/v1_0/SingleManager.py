@@ -49,8 +49,8 @@ class SingleManager(JsonTranslator):
     def put(self, id=None):
         self.logger.info("%s: put" % __name__)
         try:
-            if id is not None:
-                return self.make_http_response(False, 'need not a id arg')
+            if id is None:
+                return self.make_http_response(False, 'need a id arg')
             loc_obj = LocationList.get_by_id(id)
             if loc_obj is None:
                 return self.make_http_response(False, 'Location obj is not exist which id is %s' % str(id))

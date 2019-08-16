@@ -27,8 +27,8 @@ class DH_OptimisedManager(JsonTranslator):
     def post(self, id=None):
         self.logger.info("%s: post" % __name__)
         try:
-            if id is not None:
-                return self.make_http_response(False, 'this request method need not id arg')
+            if id is None:
+                return self.make_http_response(False, 'this request method need a id arg')
             location_obj = LocationList.get_by_id(id)
             if location_obj is None:
                 return self.make_http_response(False, 'Location obj is not exist which id is %s' % str(id))
@@ -50,8 +50,8 @@ class DH_OptimisedManager(JsonTranslator):
         self.logger.info("%s: put" % __name__)
         self.logger.info("id: %d" % id)
         try:
-            if id is not None:
-                return self.make_http_response(False, 'this request method need not id arg')
+            if id is None:
+                return self.make_http_response(False, 'this request method need a id arg')
             location_obj = LocationList.get_by_id(id)
             if OBJECT_DATA_N not in self.req_dict:
                 return self.make_http_response(False, 'request data is invalid')
